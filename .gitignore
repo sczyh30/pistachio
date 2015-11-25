@@ -1,0 +1,8 @@
+# project files
+.idea
+*.iml
+out
+build
+.gradle
+gen
+
