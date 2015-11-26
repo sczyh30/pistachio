@@ -1,6 +1,6 @@
 #Pistachio Change Log
 
-## 2015-11-17, Version 0.0.2 build 4 (dev), @sczyh30
+## 2015-11-26, Version 0.0.2 build 4 (dev), @sczyh30
 
 ### Notable changes
 
