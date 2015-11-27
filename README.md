@@ -8,4 +8,4 @@ Pistachio is released under the [MIT License][].
 
 
 
-[Apache License]: https://opensource.org/licenses/MIT
+[MIT License]: https://opensource.org/licenses/MIT
