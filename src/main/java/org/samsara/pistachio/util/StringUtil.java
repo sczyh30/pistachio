@@ -10,7 +10,7 @@ import java.util.Objects;
 public class StringUtil {
 
     /**
-     * This method convert byte stream to a hex string
+     * This method converts byte stream to a hex string
      * @param bytes byte stream array
      * @return the hex string
      */
