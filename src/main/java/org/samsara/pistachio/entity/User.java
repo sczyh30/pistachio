@@ -10,6 +10,8 @@ public class User {
 
     private Integer uid;
 
+    private Integer borrowId;
+
     private String username;
 
     private String password;
@@ -28,6 +30,14 @@ public class User {
 
     public void setUid(Integer uid) {
         this.uid = uid;
+    }
+
+    public Integer getBorrowId() {
+        return borrowId;
+    }
+
+    public void setBorrowId(Integer borrowId) {
+        this.borrowId = borrowId;
     }
 
     public String getUsername() {
@@ -80,8 +90,9 @@ public class User {
 
     @Override
     public String toString() {
-        return "User -> {" +
+        return "User{" +
                 "uid=" + uid +
+                ", borrowId=" + borrowId +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
