@@ -56,9 +56,9 @@ public class PBKDF2 {
      * @param   password    the password to hash
      * @return              a salted PBKDF2 hash of the password
      */
-    public static String createHash(String password)
+    public static String pbkdf2(String password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
-        return createHash(password.toCharArray());
+        return pbkdf2(password.toCharArray());
     }
 
     /**
@@ -67,7 +67,7 @@ public class PBKDF2 {
      * @param   password    the password to hash
      * @return              a salted PBKDF2 hash of the password
      */
-    public static String createHash(char[] password)
+    public static String pbkdf2(char[] password)
             throws NoSuchAlgorithmException, InvalidKeySpecException {
         // Generate a random salt
         SecureRandom random = new SecureRandom();
@@ -186,9 +186,9 @@ public class PBKDF2 {
         try
         {
             // Print out 10 hashes
-            System.out.println(createHash("sdadasdx"));
+            System.out.println(pbkdf2("sdadasdx"));
             for(int i = 0; i < 10; i++)
-                System.out.println(PBKDF2.createHash("passw0Rd!"));
+                System.out.println(PBKDF2.pbkdf2("passw0Rd!"));
 
             // Test password validation
             boolean failure = false;
@@ -196,8 +196,8 @@ public class PBKDF2 {
             for(int i = 0; i < 100; i++)
             {
                 String password = ""+i;
-                String hash = createHash(password);
-                String secondHash = createHash(password);
+                String hash = pbkdf2(password);
+                String secondHash = pbkdf2(password);
                 if(hash.equals(secondHash)) {
                     System.out.println("FAILURE: TWO HASHES ARE EQUAL!");
                     failure = true;

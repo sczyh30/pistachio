@@ -12,7 +12,7 @@ public class PBKDF2Test {
     @Test
     public void testValidatePassword() throws Exception {
         String p1 = "D5s6!4$3d8*ca-?F5ck0h";
-        String kk = PBKDF2.createHash(p1);
+        String kk = PBKDF2.pbkdf2(p1);
         System.out.println(kk);
         assertEquals(true, PBKDF2.validatePassword(p1, kk));
         assertEquals(false, PBKDF2.validatePassword(p1, kk + "1000")); //OK

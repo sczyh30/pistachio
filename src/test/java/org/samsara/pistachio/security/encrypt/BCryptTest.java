@@ -16,7 +16,7 @@ public class BCryptTest {
         String p1 = "D5s6!4$3d8*ca-?F5ck0h";
         // Time test
         for(int i = 0; i < 100; i++) {
-            String s1 = BCrypt.gensalt(12);
+            String s1 = BCrypt.gensalt(10);
             System.out.println("SALT -> " + s1);
             String target = BCrypt.encrypt(p1, s1);
             System.out.println("PSHASH -> " + target);
