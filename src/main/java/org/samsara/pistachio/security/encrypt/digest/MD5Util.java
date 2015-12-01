@@ -1,5 +1,6 @@
 package org.samsara.pistachio.security.encrypt.digest;
 
+import org.samsara.pistachio.security.EncryptException;
 import org.samsara.pistachio.util.StringUtil;
 
 import java.security.MessageDigest;
@@ -31,8 +32,8 @@ public class MD5Util {
             }
         }
         else {
-            System.out.println("#E2:Null String at MD5Util.MD5");
-            return "";
+            throw new EncryptException("null string parameter is invalid");
+            //return "";
         }
     }
 }
