@@ -24,6 +24,11 @@
     where uid = #{uid,jdbcType=INTEGER}
   </select>
 
+  <select id="getByName" resultType="org.samsara.pistachio.entity.User">
+    SELECT <include refid="Base_Column_List" /> FROM user
+    WHERE username = #{username, jdbcType=VARCHAR}
+  </select>
+
   <delete id="remove" parameterType="java.lang.Integer" >
     delete from user
     where uid = #{uid,jdbcType=INTEGER}

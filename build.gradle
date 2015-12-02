@@ -24,10 +24,15 @@ dependencies {
     compile 'org.springframework:spring-context:4.2.3.RELEASE'
     compile 'org.springframework:spring-aop:4.2.3.RELEASE'
     compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.3.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.3.RELEASE'
+
     // Mybatis ORM dependencies
     compile 'org.mybatis:mybatis:3.3.0'
     compile 'org.mybatis:mybatis-spring:1.2.3'
     compile 'mysql:mysql-connector-java:5.1.37'
+    // Database pool
+    compile 'com.alibaba:druid:1.0.16'
     // Logger dependencies
     compile 'org.slf4j:slf4j-log4j12:1.7.13'
     // Cache dependencies

@@ -1,5 +1,7 @@
 package org.samsara.pistachio.service;
 
+import org.samsara.pistachio.entity.User;
+
 /**
  * Samsara Pistachio Service
  * User service interface
@@ -7,7 +9,7 @@ package org.samsara.pistachio.service;
  */
 public interface IUserService {
 
-    boolean login();
+    boolean login(String username, String password);
 
-    boolean register();
+    boolean register(User user);
 }
