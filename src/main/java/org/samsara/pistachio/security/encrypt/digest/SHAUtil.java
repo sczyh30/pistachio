@@ -1,5 +1,6 @@
 package org.samsara.pistachio.security.encrypt.digest;
 
+import org.samsara.pistachio.security.EncryptException;
 import org.samsara.pistachio.util.StringUtil;
 
 import java.security.MessageDigest;
@@ -32,8 +33,7 @@ public class SHAUtil {
             }
         }
         else {
-            System.out.println("#E2:Null String at SHA1Util.SHA1");
-            return "";
+            throw new EncryptException("null string parameter is invalid");
         }
     }
 }
