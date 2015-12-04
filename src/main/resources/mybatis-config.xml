@@ -33,6 +33,7 @@
     <!-- Table mappers -->
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
+        <mapper resource="mapper/UserAuthMapper.xml"/>
     </mappers>
 
 </configuration>

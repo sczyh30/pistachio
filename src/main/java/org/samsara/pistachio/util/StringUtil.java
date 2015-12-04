@@ -1,5 +1,7 @@
 package org.samsara.pistachio.util;
 
+import org.springframework.web.util.HtmlUtils;
+
 /**
  * Samsara Common Library<br/>
  * String util class
@@ -29,5 +31,9 @@ public class StringUtil {
             System.out.println("#E2:Null Object when converting at StringUtil.bytes2hex");
             return "";
         }
+    }
+
+    public static String htmlEscape(String str) {
+        return HtmlUtils.htmlEscape(str);
     }
 }
