@@ -6,14 +6,14 @@ import org.samsara.pistachio.util.StringUtil;
 import java.security.MessageDigest;
 
 /**
- * Samsara Common Library<br/>
+ * Samsara Common Library<br>
  * MD5 encrypt class
  * @author sczyh30
  */
 public class MD5Util {
 
     /**
-     * Use MD5 algorithm to hash the string.
+     * <p>Use MD5 algorithm to hash the string.</p>
      * This might not be very safe due to its length.
      * @param str string
      * @return encrypted string

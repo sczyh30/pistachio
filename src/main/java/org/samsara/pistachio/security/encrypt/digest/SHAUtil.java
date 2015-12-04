@@ -7,7 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * Samsara Common Library<br/>
+ * Samsara Common Library<br>
  * SHA encrypt util class
  * @author sczyh30
  */

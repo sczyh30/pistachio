@@ -14,7 +14,7 @@ import java.security.spec.InvalidKeySpecException;
 public class EncryptUtil {
 
     /**
-     * Encryption for common password storage.<br/>
+     * Encryption for common password storage.<br>
      * Algorithm: Frontend Initial(<strong>SHA-256</strong>) + Backend(<strong>PBKDF2</strong>)
      *
      * @param password frontend initial encrypted password (SHA-256)
@@ -29,7 +29,7 @@ public class EncryptUtil {
     }
 
     /**
-     * Encryption for common password storage.<br/>
+     * Encryption for common password storage.<br>
      * Algorithm: Frontend Initial(<strong>SHA-256</strong>) + Backend(<strong>PBKDF2</strong>)
      *
      * @param password frontend initial encrypted password (SHA-256)
