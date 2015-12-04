@@ -14,8 +14,6 @@ public class User {
 
     private String username;
 
-    private String password;
-
     private Integer role;
 
     private String tips;
@@ -46,14 +44,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
     }
 
     public Integer getRole() {
@@ -94,7 +84,6 @@ public class User {
                 "uid=" + uid +
                 ", borrowId=" + borrowId +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", role=" + role +
                 ", tips='" + tips + '\'' +
                 ", gender=" + gender +

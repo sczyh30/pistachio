@@ -1,9 +1,7 @@
 package org.samsara.pistachio.util;
 
-import java.util.Objects;
-
 /**
- * Samsara Common Library
+ * Samsara Common Library<br/>
  * String util class
  * @author sczyh30
  */
@@ -15,7 +13,7 @@ public class StringUtil {
      * @return the hex string
      */
     public static String bytes2hex(byte[] bytes) {
-        if(!Objects.isNull(bytes)) {
+        if(bytes != null) {
             StringBuilder hexString = new StringBuilder();
             // bytes to hex
             for (byte b : bytes) {

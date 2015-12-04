@@ -4,10 +4,10 @@ import org.samsara.pistachio.entity.User;
 
 /**
  * Samsara Pistachio Service
- * User service interface
+ * User auth service interface
  * @author sczyh30
  */
-public interface IUserService {
+public interface IUserAuthService {
 
     boolean login(String username, String password);
 
