@@ -42,4 +42,17 @@ public class EncryptUtil {
             throws InvalidKeySpecException, NoSuchAlgorithmException {
         return PBKDF2.pbkdf2(password);
     }
+
+    /**
+     * Validate the clear string with the hashed string
+     * @param clear clear string
+     * @param hashed final hashed password
+     * @return true if the validate is correct; else false;
+     * @throws InvalidKeySpecException
+     * @throws NoSuchAlgorithmException
+     */
+    public static boolean validate(String clear, String hashed)
+            throws InvalidKeySpecException, NoSuchAlgorithmException {
+        return PBKDF2.validatePassword(clear, hashed);
+    }
 }

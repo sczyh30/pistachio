@@ -11,7 +11,7 @@ import javax.annotation.Resource;
  * Book service
  * @author sczyh30
  */
-@Service
+@Service(value = "bookService")
 public class BookService {
 
     @Resource
@@ -20,7 +20,5 @@ public class BookService {
     public BookInfo getBook(String ISBN) {
         return infoMapper.get(ISBN);
     }
-
-
 
 }

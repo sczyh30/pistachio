@@ -53,6 +53,12 @@
         WHERE cid = #{cid,jdbcType=INTEGER}
     </select>
 
+    <select id="getCidByName" resultType="java.lang.Integer" parameterType="java.lang.String">
+        SELECT cid
+        FROM book_category
+        WHERE name = #{name,jdbcType=VARCHAR}
+    </select>
+
     <update id="update" parameterType="org.samsara.pistachio.entity.BookCategory">
         UPDATE book_category
         SET name = #{name,jdbcType=VARCHAR}

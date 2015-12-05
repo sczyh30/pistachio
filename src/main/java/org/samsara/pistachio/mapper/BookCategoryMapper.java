@@ -40,6 +40,13 @@ public interface BookCategoryMapper {
     String getName(Integer cid);
 
     /**
+     * Get the category id by category name
+     * @param name category name
+     * @return category id
+     */
+    Integer getCidByName(String name);
+
+    /**
      * Update the category record in the database
      * @param record the category entity that shall update
      * @return true if the process is successful; else false.

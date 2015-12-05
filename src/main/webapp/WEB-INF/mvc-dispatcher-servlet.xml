@@ -7,7 +7,6 @@
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="org.samsara.pistachio.controller"/>
-    <context:component-scan base-package="org.samsara.pistachio.service"/>
 
     <mvc:annotation-driven/>
     

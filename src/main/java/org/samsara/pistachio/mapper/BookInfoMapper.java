@@ -17,6 +17,11 @@ public interface BookInfoMapper {
 
     int insertSelective(BookInfo book);
 
+    /**
+     * Get the book info object by ISBN
+     * @param isbn ISBN of the book
+     * @return the book info entity
+     */
     BookInfo get(String isbn);
 
     BookInfo getByName(String name);

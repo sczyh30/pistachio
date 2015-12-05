@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
@@ -16,26 +17,28 @@ import java.security.spec.InvalidKeySpecException;
  * User auth service implementation
  * @author sczyh30
  */
-@Service("userAuthService")
-@Transactional
-public class UserAuthServiceImpl implements IUserAuthService {
 
-    @Autowired
+//@Transactional
+@Service("userAuthService")
+public class UserAuthServiceImpl /*implements IUserAuthService*/ {
+
+    @Resource
     private UserAuthMapper mapper;
 
-    @Override
+    //@Override
     @Transactional(readOnly = true)
     public boolean login(String username, String password) {
-        UserAuth user = mapper.getByName(username);
+        String pwd = mapper.getPassword(username);
         try {
-            return EncryptUtil.encrypt(password).equals(user.getPassword());
+            //return EncryptUtil.encrypt(password).equals(user.getPassword());
+            return EncryptUtil.validate(password, pwd);
         } catch (InvalidKeySpecException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return false;
     }
 
-    @Override
+    //@Override
     public boolean register(User user) {
         return false;
     }
