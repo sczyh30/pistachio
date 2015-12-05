@@ -22,7 +22,6 @@
         <property name="poolPreparedStatements" value="true" />
         <property name="maxPoolPreparedStatementPerConnectionSize" value="33" />
         -->
-        <property name="validationQuery" value="${validationQuery}" />
         <property name="testOnBorrow" value="false" />
         <property name="testOnReturn" value="false" />
         <property name="testWhileIdle" value="true" />
@@ -41,13 +40,16 @@
     <!-- mybatis configuration -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
+        <property name="mapperLocations" value="mapper/*"/>
     </bean>
 
+    <!-- automatic scanner -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="org.samsara.pistachio.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
+    <!-- transaction manager -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource" />

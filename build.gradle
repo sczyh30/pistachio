@@ -29,6 +29,7 @@ dependencies {
     compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
     compile 'org.springframework:spring-jdbc:4.2.3.RELEASE'
     compile 'org.springframework:spring-tx:4.2.3.RELEASE'
+    compile 'org.springframework:spring-test:4.2.3.RELEASE'
 
     // Mybatis ORM dependencies
     compile 'org.mybatis:mybatis:3.3.0'

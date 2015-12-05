@@ -16,7 +16,7 @@ import java.security.spec.InvalidKeySpecException;
  * User auth service implementation
  * @author sczyh30
  */
-@Service
+@Service("userAuthService")
 @Transactional
 public class UserAuthServiceImpl implements IUserAuthService {
 
