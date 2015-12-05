@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.samsara.pistachio.mapper.BorrowStatusMapper" >
+  <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BorrowStatus" >
+    <id column="bid" property="bid" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="ISBN" property="ISBN" jdbcType="VARCHAR" />
+    <result column="start" property="start" jdbcType="VARCHAR" />
+    <result column="end" property="end" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bid, status, ISBN, start, end
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrow_status
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrow_status
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.samsara.pistachio.entity.BorrowStatus" >
+    insert into borrow_status (bid, status, ISBN, 
+      start, end)
+    values (#{bid,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{ISBN,jdbcType=VARCHAR},
+      #{start,jdbcType=VARCHAR}, #{end,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.samsara.pistachio.entity.BorrowStatus" >
+    insert into borrow_status
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="ISBN != null" >
+        ISBN,
+      </if>
+      <if test="start != null" >
+        start,
+      </if>
+      <if test="end != null" >
+        end,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="ISBN != null" >
+        #{ISBN,jdbcType=VARCHAR},
+      </if>
+      <if test="start != null" >
+        #{start,jdbcType=VARCHAR},
+      </if>
+      <if test="end != null" >
+        #{end,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.samsara.pistachio.entity.BorrowStatus" >
+    update borrow_status
+    <set >
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="ISBN != null" >
+        ISBN = #{ISBN,jdbcType=VARCHAR},
+      </if>
+      <if test="start != null" >
+        start = #{start,jdbcType=VARCHAR},
+      </if>
+      <if test="end != null" >
+        end = #{end,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.samsara.pistachio.entity.BorrowStatus" >
+    update borrow_status
+    set status = #{status,jdbcType=VARCHAR},
+      ISBN = #{ISBN,jdbcType=VARCHAR},
+      start = #{start,jdbcType=VARCHAR},
+      end = #{end,jdbcType=VARCHAR}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

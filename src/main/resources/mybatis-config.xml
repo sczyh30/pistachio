@@ -23,7 +23,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/pistachio"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/pistachio?useUnicode=true&amp;characterEncoding=utf8"/>
                 <property name="username" value="pdev01"/>
                 <property name="password" value="test"/>
             </dataSource>
@@ -34,6 +34,7 @@
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/UserAuthMapper.xml"/>
+        <mapper resource="mapper/BookInfoMapper.xml"/>
     </mappers>
 
 </configuration>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.samsara.pistachio.mapper.BookDetailMapper" >
+  <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BookDetail" >
+    <id column="ISBN" property="ISBN" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="author_summary" property="authorSummary" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ISBN, summary, author_summary, category
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from book_detail
+    where ISBN = #{ISBN,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from book_detail
+    where ISBN = #{ISBN,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="org.samsara.pistachio.entity.BookDetail" >
+    insert into book_detail (ISBN, summary, author_summary, 
+      category)
+    values (#{ISBN,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{authorSummary,jdbcType=VARCHAR},
+      #{category,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="org.samsara.pistachio.entity.BookDetail" >
+    insert into book_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ISBN != null" >
+        ISBN,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="authorSummary != null" >
+        author_summary,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ISBN != null" >
+        #{ISBN,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="authorSummary != null" >
+        #{authorSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.samsara.pistachio.entity.BookDetail" >
+    update book_detail
+    <set >
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="authorSummary != null" >
+        author_summary = #{authorSummary,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ISBN = #{ISBN,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.samsara.pistachio.entity.BookDetail" >
+    update book_detail
+    set summary = #{summary,jdbcType=VARCHAR},
+      author_summary = #{authorSummary,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR}
+    where ISBN = #{ISBN,jdbcType=VARCHAR}
+  </update>
+</mapper>

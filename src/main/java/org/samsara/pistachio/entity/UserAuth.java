@@ -7,9 +7,7 @@ package org.samsara.pistachio.entity;
 public class UserAuth {
 
     private Integer uid;
-
     private String username;
-
     private String password;
 
     public Integer getUid() {

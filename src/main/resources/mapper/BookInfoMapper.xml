@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.samsara.pistachio.mapper.BookInfoMapper">
+    <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BookInfo">
+        <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="author" property="author" jdbcType="VARCHAR"/>
+        <result column="pub_date" property="pubDate" jdbcType="DATE"/>
+        <result column="publisher" property="publisher" jdbcType="VARCHAR"/>
+        <result column="page" property="page" jdbcType="INTEGER"/>
+        <result column="category" property="category" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ISBN, name, author, pub_date, publisher, page, category
+    </sql>
+
+    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from book_info
+        where ISBN = #{ISBN,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT <include refid="Base_Column_List"/> FROM book_info
+        WHERE name = #{name,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getAllByAuthor" parameterType="java.lang.String" resultType="org.samsara.pistachio.entity.BookInfo">
+        SELECT * FROM book_info
+        WHERE author = #{author,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="remove" parameterType="java.lang.String">
+        DELETE FROM book_info
+        WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="org.samsara.pistachio.entity.BookInfo">
+        INSERT INTO book_info (ISBN, name, author,
+                               pub_date, publisher, page,
+                               category)
+        VALUES (#{ISBN,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+                #{pubDate,jdbcType=DATE}, #{publisher,jdbcType=VARCHAR}, #{page,jdbcType=INTEGER},
+                #{category,jdbcType=INTEGER})
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.samsara.pistachio.entity.BookInfo">
+        insert into book_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ISBN != null">
+                ISBN,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="author != null">
+                author,
+            </if>
+            <if test="pubDate != null">
+                pub_date,
+            </if>
+            <if test="publisher != null">
+                publisher,
+            </if>
+            <if test="page != null">
+                page,
+            </if>
+            <if test="category != null">
+                category,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ISBN != null">
+                #{ISBN,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="pubDate != null">
+                #{pubDate,jdbcType=DATE},
+            </if>
+            <if test="publisher != null">
+                #{publisher,jdbcType=VARCHAR},
+            </if>
+            <if test="page != null">
+                #{page,jdbcType=INTEGER},
+            </if>
+            <if test="category != null">
+                #{category,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.samsara.pistachio.entity.BookInfo">
+        update book_info
+        <set>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="author != null">
+                author = #{author,jdbcType=VARCHAR},
+            </if>
+            <if test="pubDate != null">
+                pub_date = #{pubDate,jdbcType=DATE},
+            </if>
+            <if test="publisher != null">
+                publisher = #{publisher,jdbcType=VARCHAR},
+            </if>
+            <if test="page != null">
+                page = #{page,jdbcType=INTEGER},
+            </if>
+            <if test="category != null">
+                category = #{category,jdbcType=INTEGER},
+            </if>
+        </set>
+        where ISBN = #{ISBN,jdbcType=VARCHAR}
+    </update>
+
+    <update id="update" parameterType="org.samsara.pistachio.entity.BookInfo">
+        UPDATE book_info
+        SET name      = #{name,jdbcType=VARCHAR},
+            author    = #{author,jdbcType=VARCHAR},
+            pub_date  = #{pubDate,jdbcType=DATE},
+            publisher = #{publisher,jdbcType=VARCHAR},
+            page      = #{page,jdbcType=INTEGER},
+            category  = #{category,jdbcType=INTEGER}
+        WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
+    </update>
+</mapper>

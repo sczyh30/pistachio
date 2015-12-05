@@ -20,7 +20,7 @@ import java.security.spec.InvalidKeySpecException;
 @Transactional
 public class UserAuthServiceImpl implements IUserAuthService {
 
-    //@Autowired
+    @Autowired
     private UserAuthMapper mapper;
 
     @Override
