@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface BookInfoMapper {
 
-    boolean remove(Integer isbn);
+    boolean remove(String isbn);
 
     boolean insert(BookInfo book);
 
@@ -22,7 +22,7 @@ public interface BookInfoMapper {
      * @param isbn ISBN of the book
      * @return the book info entity
      */
-    BookInfo get(Integer isbn);
+    BookInfo get(String isbn);
 
     BookInfo getByName(String name);
 

@@ -10,7 +10,7 @@ import org.samsara.pistachio.entity.BorrowStatus;
 public interface BorrowStatusMapper {
     int deleteByPrimaryKey(Integer bid);
 
-    boolean remove(Integer bid, Integer ISBN);
+    boolean remove(Integer bid, String ISBN);
 
     int insert(BorrowStatus record);
 

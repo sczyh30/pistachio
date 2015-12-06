@@ -31,7 +31,7 @@ public class BookService {
      * @param ISBN ISBN of the book
      * @return the BookInfo entity
      */
-    public BookInfo getBook(Integer ISBN) {
+    public BookInfo getBook(String ISBN) {
         return infoMapper.get(ISBN);
     }
 
@@ -60,7 +60,7 @@ public class BookService {
      * @param ISBN ISBN of the book
      * @return true if remove process is successful; else false
      */
-    public boolean removeBook(Integer ISBN) {
+    public boolean removeBook(String ISBN) {
         return infoMapper.remove(ISBN);
     }
 

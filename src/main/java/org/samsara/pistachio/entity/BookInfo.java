@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class BookInfo {
 
-    private String ISBN; //TODO: ISBN should be INTEGER(13) by standard
+    private String ISBN; //TODO: ISBN should be NUM(13) by standard
     private String name;
     private String author;
     private Date pubDate;

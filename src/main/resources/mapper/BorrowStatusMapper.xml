@@ -4,7 +4,7 @@
     <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BorrowStatus">
         <id column="bid" property="bid" jdbcType="INTEGER"/>
         <result column="status" property="status" jdbcType="VARCHAR"/>
-        <result column="ISBN" property="ISBN" jdbcType="INTEGER"/>
+        <result column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
         <result column="start" property="start" jdbcType="VARCHAR"/>
         <result column="end" property="end" jdbcType="VARCHAR"/>
     </resultMap>
@@ -24,7 +24,7 @@
 
     <delete id="remove">
         DELETE FROM borrow_status
-        WHERE bid = #{bid,jdbcType=INTEGER} and ISBN = #{ISBN,jdbcType=INTEGER}
+        WHERE bid = #{bid,jdbcType=INTEGER} and ISBN = #{ISBN,jdbcType=VARCHAR}
     </delete>
 
     <insert id="insert" parameterType="org.samsara.pistachio.entity.BorrowStatus">

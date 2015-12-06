@@ -9,13 +9,13 @@ import org.samsara.pistachio.entity.BookDetail;
  */
 public interface BookDetailMapper {
 
-    boolean remove(Integer isbn);
+    boolean remove(String ISBN);
 
     int insert(BookDetail record);
 
     int insertSelective(BookDetail record);
 
-    BookDetail get(Integer isbn);
+    BookDetail get(String ISBN);
 
     int updateByPrimaryKeySelective(BookDetail record);
 
