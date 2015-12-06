@@ -2,6 +2,8 @@ package org.samsara.pistachio.service;
 
 import org.samsara.pistachio.entity.User;
 
+import java.util.Date;
+
 /**
  * Samsara Pistachio Service
  * User auth service interface
@@ -11,5 +13,6 @@ public interface IUserAuthService {
 
     boolean login(String username, String password);
 
-    boolean register(User user);
+    boolean register(String username, String password, String tips,
+                     String email, String gender, Date birthday);
 }

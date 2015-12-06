@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface BookInfoMapper {
 
-    int remove(String isbn);
+    boolean remove(Integer isbn);
 
-    int insert(BookInfo book);
+    boolean insert(BookInfo book);
 
     int insertSelective(BookInfo book);
 
@@ -22,13 +22,15 @@ public interface BookInfoMapper {
      * @param isbn ISBN of the book
      * @return the book info entity
      */
-    BookInfo get(String isbn);
+    BookInfo get(Integer isbn);
 
     BookInfo getByName(String name);
 
     List<BookInfo> getAllByAuthor(String author);
 
+    List<String> getAllNameByAuthor(String author);
+
     int updateByPrimaryKeySelective(BookInfo record);
 
-    int update(BookInfo record);
+    boolean update(BookInfo record);
 }

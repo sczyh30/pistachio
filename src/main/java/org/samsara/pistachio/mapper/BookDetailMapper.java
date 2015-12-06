@@ -8,15 +8,16 @@ import org.samsara.pistachio.entity.BookDetail;
  * @author sczyh30
  */
 public interface BookDetailMapper {
-    int deleteByPrimaryKey(String isbn);
+
+    boolean remove(Integer isbn);
 
     int insert(BookDetail record);
 
     int insertSelective(BookDetail record);
 
-    BookDetail selectByPrimaryKey(String isbn);
+    BookDetail get(Integer isbn);
 
     int updateByPrimaryKeySelective(BookDetail record);
 
-    int updateByPrimaryKey(BookDetail record);
+    int update(BookDetail record);
 }

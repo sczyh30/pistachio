@@ -27,6 +27,19 @@ public class BookInfoMapperTest {
     @Resource
     private BookInfoMapper mapper;
 
+    //@Test
+    public void testForTemp() throws Exception {
+        BookInfo b1 = new BookInfo();
+        b1.setAuthor("sczyh30");
+        b1.setISBN("9787530215220");
+        b1.setName("蜜汁Scala：卷I 出入师门");
+        b1.setCategory(1406);
+        b1.setPage(666);
+        b1.setPubDate(new Date());
+        b1.setPublisher("朝鲜劳动党废土出版社");
+        mapper.insert(b1);
+    }
+
     @Before
     public void testInsert() throws Exception {
         BookInfo b1 = new BookInfo();

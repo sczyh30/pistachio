@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.samsara.pistachio.mapper.BookStatusMapper" >
   <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BookStatus" >
-    <id column="ISBN" property="ISBN" jdbcType="VARCHAR" />
+    <id column="ISBN" property="ISBN" jdbcType="INTEGER" />
     <result column="num_entire" property="numEntire" jdbcType="INTEGER" />
     <result column="num_present" property="numPresent" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="BIT" />
@@ -10,20 +10,20 @@
   <sql id="Base_Column_List" >
     ISBN, num_entire, num_present, status
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from book_status
-    where ISBN = #{ISBN,jdbcType=VARCHAR}
+    where ISBN = #{ISBN,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from book_status
-    where ISBN = #{ISBN,jdbcType=VARCHAR}
+    where ISBN = #{ISBN,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.samsara.pistachio.entity.BookStatus" >
     insert into book_status (ISBN, num_entire, num_present, 
       status)
-    values (#{ISBN,jdbcType=VARCHAR}, #{numEntire,jdbcType=INTEGER}, #{numPresent,jdbcType=INTEGER},
+    values (#{ISBN,jdbcType=INTEGER}, #{numEntire,jdbcType=INTEGER}, #{numPresent,jdbcType=INTEGER},
       #{status,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="org.samsara.pistachio.entity.BookStatus" >
@@ -44,7 +44,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="ISBN != null" >
-        #{ISBN,jdbcType=VARCHAR},
+        #{ISBN,jdbcType=INTEGER},
       </if>
       <if test="numEntire != null" >
         #{numEntire,jdbcType=INTEGER},
@@ -70,13 +70,13 @@
         status = #{status,jdbcType=BIT},
       </if>
     </set>
-    where ISBN = #{ISBN,jdbcType=VARCHAR}
+    where ISBN = #{ISBN,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="org.samsara.pistachio.entity.BookStatus" >
     update book_status
     set num_entire = #{numEntire,jdbcType=INTEGER},
       num_present = #{numPresent,jdbcType=INTEGER},
       status = #{status,jdbcType=BIT}
-    where ISBN = #{ISBN,jdbcType=VARCHAR}
+    where ISBN = #{ISBN,jdbcType=INTEGER}
   </update>
 </mapper>

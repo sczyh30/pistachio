@@ -8,13 +8,13 @@ import org.samsara.pistachio.entity.BookStatus;
  * @author sczyh30
  */
 public interface BookStatusMapper {
-    int deleteByPrimaryKey(String isbn);
+    int deleteByPrimaryKey(Integer isbn);
 
     int insert(BookStatus record);
 
     int insertSelective(BookStatus record);
 
-    BookStatus selectByPrimaryKey(String isbn);
+    BookStatus selectByPrimaryKey(Integer isbn);
 
     int updateByPrimaryKeySelective(BookStatus record);
 

@@ -22,6 +22,8 @@ public class User {
 
     private Date birth;
 
+    private String email;
+
     public Integer getUid() {
         return uid;
     }
@@ -78,9 +80,17 @@ public class User {
         this.birth = birth;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+        return "User -> {" +
                 "uid=" + uid +
                 ", borrowId=" + borrowId +
                 ", username='" + username + '\'' +
@@ -88,6 +98,7 @@ public class User {
                 ", tips='" + tips + '\'' +
                 ", gender=" + gender +
                 ", birth=" + birth +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

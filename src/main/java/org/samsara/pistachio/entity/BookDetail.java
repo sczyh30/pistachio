@@ -13,6 +13,15 @@ public class BookDetail {
 
     private String category;
 
+    public BookDetail() {}
+
+    public BookDetail(String ISBN, String summary, String authorSummary, String category) {
+        this.ISBN = ISBN;
+        this.summary = summary;
+        this.authorSummary = authorSummary;
+        this.category = category;
+    }
+
     public String getISBN() {
         return ISBN;
     }
