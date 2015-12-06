@@ -7,7 +7,8 @@
     <context:annotation-config />
 
     <mybatis:scan base-package="org.samsara.pistachio.mapper"/>
-    <context:component-scan base-package="org.samsara.pistachio.service" />
+    <!-- <context:component-scan base-package="org.samsara.pistachio.controller"/>
+    <context:component-scan base-package="org.samsara.pistachio.service" /> -->
 
 
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
@@ -40,8 +41,8 @@
 
     <!-- mybatis configuration -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="mapperLocations" value="mapper/*"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath*:mapper/*.xml"/>
     </bean>
 
     <!-- automatic scanner -->
