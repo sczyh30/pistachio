@@ -3,6 +3,7 @@ package org.samsara.pistachio.service;
 import org.samsara.pistachio.entity.BookInfo;
 import org.samsara.pistachio.mapper.BookInfoMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -31,6 +32,7 @@ public class BookService {
      * @param ISBN ISBN of the book
      * @return the BookInfo entity
      */
+    @Transactional(readOnly = true)
     public BookInfo getBook(String ISBN) {
         return infoMapper.get(ISBN);
     }
@@ -40,6 +42,7 @@ public class BookService {
      * @param name name of the book
      * @return the BookInfo entity
      */
+    @Transactional(readOnly = true)
     public BookInfo getBookByName(String name) {
         return infoMapper.getByName(name);
     }
