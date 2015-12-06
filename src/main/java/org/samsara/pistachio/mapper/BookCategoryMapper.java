@@ -12,17 +12,44 @@ public interface BookCategoryMapper {
     /**
      * Remove the target category by category id(cid)
      * @param cid category id
-     * @return if the process is ok
+     * @return true if the process is successful; else false.
      */
     int remove(Integer cid);
 
-    int insert(BookCategory record);
+    /**
+     * Add a category to the database
+     * @param category category entity
+     * @return true if the process is successful; else false.
+     */
+    int add(BookCategory category);
 
-    int insertSelective(BookCategory record);
+    int insertSelective(BookCategory category);
 
+    /**
+     * Get the category entity by category id(cid)
+     * @param cid category id
+     * @return the category entity
+     */
     BookCategory get(Integer cid);
 
-    int updateByPrimaryKeySelective(BookCategory record);
+    /**
+     * Get the category name by category id(cid)
+     * @param cid category id
+     * @return category name
+     */
+    String getName(Integer cid);
 
+    /**
+     * Get the category id by category name
+     * @param name category name
+     * @return category id
+     */
+    Integer getCidByName(String name);
+
+    /**
+     * Update the category record in the database
+     * @param record the category entity that shall update
+     * @return true if the process is successful; else false.
+     */
     int update(BookCategory record);
 }

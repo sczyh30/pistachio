@@ -5,6 +5,7 @@ package org.samsara.pistachio.entity;
  * @author sczyh30
  */
 public class BookDetail {
+
     private String ISBN;
 
     private String summary;
@@ -12,6 +13,15 @@ public class BookDetail {
     private String authorSummary;
 
     private String category;
+
+    public BookDetail() {}
+
+    public BookDetail(String ISBN, String summary, String authorSummary, String category) {
+        this.ISBN = ISBN;
+        this.summary = summary;
+        this.authorSummary = authorSummary;
+        this.category = category;
+    }
 
     public String getISBN() {
         return ISBN;
@@ -43,5 +53,15 @@ public class BookDetail {
 
     public void setCategory(String category) {
         this.category = category == null ? null : category.trim();
+    }
+
+    @Override
+    public String toString() {
+        return "Book Detail -> {" +
+                "ISBN='" + ISBN + '\'' +
+                ", summary='" + summary + '\'' +
+                ", authorSummary='" + authorSummary + '\'' +
+                ", category='" + category + '\'' +
+                '}';
     }
 }

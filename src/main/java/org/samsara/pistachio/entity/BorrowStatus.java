@@ -9,7 +9,7 @@ public class BorrowStatus {
 
     private String status;
 
-    private String isbn;
+    private String ISBN;
 
     private String start;
 
@@ -31,12 +31,12 @@ public class BorrowStatus {
         this.status = status == null ? null : status.trim();
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getISBN() {
+        return ISBN;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn == null ? null : isbn.trim();
+    public void setISBN(String ISBN) {
+        this.ISBN = ISBN == null ? null : ISBN.trim();
     }
 
     public String getStart() {

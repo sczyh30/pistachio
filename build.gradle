@@ -1,5 +1,5 @@
 group 'Samsara'
-version '0.0.6'
+version '0.1.14'
 
 apply plugin: 'java'
 apply plugin: 'war'
@@ -10,7 +10,7 @@ targetCompatibility = 1.8
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    //mavenCentral()
     maven {
         url 'http://maven.oschina.net/content/groups/public/'
     }
@@ -19,6 +19,11 @@ repositories {
 // enable auto import
 
 dependencies {
+
+    // Servlet
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'javax.servlet.jsp:jsp-api:2.2'
+
     // Spring framework dependencies
     compile 'org.springframework:spring-core:4.2.3.RELEASE'
     compile 'org.springframework:spring-context:4.2.3.RELEASE'
@@ -26,17 +31,22 @@ dependencies {
     compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
     compile 'org.springframework:spring-jdbc:4.2.3.RELEASE'
     compile 'org.springframework:spring-tx:4.2.3.RELEASE'
+    compile 'org.springframework:spring-test:4.2.3.RELEASE'
 
     // Mybatis ORM dependencies
     compile 'org.mybatis:mybatis:3.3.0'
     compile 'org.mybatis:mybatis-spring:1.2.3'
     compile 'mysql:mysql-connector-java:5.1.37'
+
     // Database pool
     compile 'com.alibaba:druid:1.0.16'
+
     // Logger dependencies
     compile 'org.slf4j:slf4j-log4j12:1.7.13'
+
     // Cache dependencies
     compile 'redis.clients:jedis:2.8.0'
+
     // AMQP dependencies
     compile 'com.rabbitmq:amqp-client:3.5.6'
 

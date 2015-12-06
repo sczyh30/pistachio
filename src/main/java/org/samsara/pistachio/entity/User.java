@@ -14,8 +14,6 @@ public class User {
 
     private String username;
 
-    private String password;
-
     private Integer role;
 
     private String tips;
@@ -23,6 +21,8 @@ public class User {
     private Integer gender;
 
     private Date birth;
+
+    private String email;
 
     public Integer getUid() {
         return uid;
@@ -46,14 +46,6 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
     }
 
     public Integer getRole() {
@@ -88,17 +80,25 @@ public class User {
         this.birth = birth;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+        return "User -> {" +
                 "uid=" + uid +
                 ", borrowId=" + borrowId +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", role=" + role +
                 ", tips='" + tips + '\'' +
                 ", gender=" + gender +
                 ", birth=" + birth +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

@@ -1,9 +1,9 @@
 package org.samsara.pistachio.util;
 
-import java.util.Objects;
+import org.springframework.web.util.HtmlUtils;
 
 /**
- * Samsara Common Library
+ * Samsara Common Library<br/>
  * String util class
  * @author sczyh30
  */
@@ -15,7 +15,7 @@ public class StringUtil {
      * @return the hex string
      */
     public static String bytes2hex(byte[] bytes) {
-        if(!Objects.isNull(bytes)) {
+        if(bytes != null) {
             StringBuilder hexString = new StringBuilder();
             // bytes to hex
             for (byte b : bytes) {
@@ -31,5 +31,9 @@ public class StringUtil {
             System.out.println("#E2:Null Object when converting at StringUtil.bytes2hex");
             return "";
         }
+    }
+
+    public static String htmlEscape(String str) {
+        return HtmlUtils.htmlEscape(str);
     }
 }

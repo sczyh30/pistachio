@@ -2,12 +2,13 @@ package org.samsara.pistachio.base;
 
 /**
  * Samsara Pistachio
- * Basic runtime exception
- * provides the base abstract exception
+ * Basic runtime exception.<br/>
+ * Provides the base abstract exception
  */
 public abstract class NestedRuntimeException extends RuntimeException {
 
     /**
+     * Constructor with message
      * @param msg exception message
      */
     public NestedRuntimeException(String msg) {
@@ -15,7 +16,7 @@ public abstract class NestedRuntimeException extends RuntimeException {
     }
 
     /**
-     *
+     * Constructor with message and Throwable
      * @param msg exception message
      * @param cause Throwable object
      */

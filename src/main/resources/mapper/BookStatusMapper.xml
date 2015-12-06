@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.samsara.pistachio.mapper.BookStatusMapper">
+
+    <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BookStatus">
+        <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
+        <result column="num_entire" property="numEntire" jdbcType="INTEGER"/>
+        <result column="num_present" property="numPresent" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="BIT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ISBN, num_entire, num_present, status
+    </sql>
+
+    <select id="getStatus" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from book_status
+        where ISBN = #{ISBN,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getEntire" resultType="java.lang.String">
+        SELECT num_entire FROM book_status
+        WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getPresent" resultType="java.lang.String">
+        SELECT num_present FROM book_status
+        WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
+    </select>
+
+    <delete id="remove" parameterType="java.lang.String">
+        DELETE FROM book_status
+        WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insert" parameterType="org.samsara.pistachio.entity.BookStatus">
+        INSERT INTO book_status (ISBN, num_entire, num_present,
+                                 status)
+        VALUES (#{ISBN,jdbcType=VARCHAR}, #{numEntire,jdbcType=INTEGER}, #{numPresent,jdbcType=INTEGER},
+                #{status,jdbcType=BIT})
+    </insert>
+
+    <!-- <insert id="insertSelective" parameterType="org.samsara.pistachio.entity.BookStatus">
+        insert into book_status
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ISBN != null">
+                ISBN,
+            </if>
+            <if test="numEntire != null">
+                num_entire,
+            </if>
+            <if test="numPresent != null">
+                num_present,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ISBN != null">
+                #{ISBN,jdbcType=VARCHAR},
+            </if>
+            <if test="numEntire != null">
+                #{numEntire,jdbcType=INTEGER},
+            </if>
+            <if test="numPresent != null">
+                #{numPresent,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert> -->
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.samsara.pistachio.entity.BookStatus">
+        update book_status
+        <set>
+            <if test="numEntire != null">
+                num_entire = #{numEntire,jdbcType=INTEGER},
+            </if>
+            <if test="numPresent != null">
+                num_present = #{numPresent,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=BIT},
+            </if>
+        </set>
+        where ISBN = #{ISBN,jdbcType=VARCHAR}
+    </update>
+
+    <update id="update" parameterType="org.samsara.pistachio.entity.BookStatus">
+        UPDATE book_status
+        SET num_entire  = #{numEntire,jdbcType=INTEGER},
+            num_present = #{numPresent,jdbcType=INTEGER},
+            status      = #{status,jdbcType=BIT}
+        WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
+    </update>
+
+    <update id="borrow">
+    </update>
+
+    <update id="ret">
+
+    </update>
+</mapper>

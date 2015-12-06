@@ -6,10 +6,17 @@
        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
+    <context:component-scan base-package="org.samsara.pistachio.service" />
     <context:component-scan base-package="org.samsara.pistachio.controller"/>
-    <context:component-scan base-package="org.samsara.pistachio.service"/>
 
     <mvc:annotation-driven/>
+    
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/"/>
+            <bean class="org.samsara.pistachio.interceptor.TestInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <bean id="contentManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
     </bean>

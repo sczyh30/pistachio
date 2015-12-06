@@ -3,23 +3,17 @@ package org.samsara.pistachio.entity;
 import java.util.Date;
 
 /**
- * Book info entity
+ * Book basic info entity
  * @author sczyh30
  */
 public class BookInfo {
 
-    private String ISBN;
-
+    private String ISBN; //TODO: ISBN should be NUM(13) by standard
     private String name;
-
     private String author;
-
     private Date pubDate;
-
     private String publisher;
-
     private Integer page;
-
     private Integer category;
 
     public String getISBN() {
