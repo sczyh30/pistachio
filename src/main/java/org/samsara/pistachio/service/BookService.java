@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Samsara Pistachio Service
@@ -28,7 +29,7 @@ public class BookService {
     }
 
     /**
-     * Get the basic book info by ISBN
+     * Get the book info by ISBN
      * @param ISBN ISBN of the book
      * @return the BookInfo entity
      */
@@ -38,13 +39,23 @@ public class BookService {
     }
 
     /**
-     * Get the basic book info by book name
+     * Get the book info by book name
      * @param name name of the book
      * @return the BookInfo entity
      */
     @Transactional(readOnly = true)
     public BookInfo getBookByName(String name) {
         return infoMapper.getByName(name);
+    }
+
+    /**
+     * Get all books by the author
+     * @param author the author name
+     * @return list of the books
+     */
+    @Transactional(readOnly = true)
+    public List<BookInfo> getAllBooksByAuthor(String author) {
+        return infoMapper.getAllByAuthor(author);
     }
 
     /**

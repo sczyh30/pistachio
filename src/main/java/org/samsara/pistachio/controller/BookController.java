@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 
+import java.util.List;
+
 import static org.samsara.pistachio.Constant.*;
 
 /**
@@ -25,17 +27,28 @@ public class BookController {
 
     /**
      * Route of getting book basic info by ISBN.<br>
-     * URL:<code>/api/book/{id}</code><br>
-     * Method:<strong>PUT</strong>
+     * URL:<pre><code>/api/book/{id}</code></pre><br>
+     * Method: <strong>GET</strong>
      * @param id ISBN of the book
      * @return the book entity if ISBN exists and token is correct; else the request error
      */
     @RequestMapping(value = "/api/book/{id}")
     public Object getBookInfo(@PathVariable(value = "id") String id) {
         BookInfo book = service.getBook(id);
+        System.out.println(book);
         if(book != null)
             return book;
         else
             return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
+    }
+
+    @RequestMapping(value = "/api/book/new")
+    public Object test1() {
+        List<BookInfo> list = service.getAllBooksByAuthor("sczyh30");
+        list.forEach(System.out::println);
+        if(list != null)
+            return list;
+        else
+            return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO);
     }
 }

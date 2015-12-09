@@ -21,7 +21,7 @@ public class BookCategoryMapperTest {
     @Resource
     private BookCategoryMapper mapper;
 
-    @Test
+    //@Test
     public void testAdd() throws Exception {
         BookCategory c1 = new BookCategory();
         c1.setCid(1407);

@@ -11,7 +11,8 @@ import org.springframework.test.context.transaction.AfterTransaction;
 
 import javax.annotation.Resource;
 
-import java.util.Date;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -35,10 +36,12 @@ public class BookInfoMapperTest {
         b1.setName("蜜汁Scala：卷I 出入师门");
         b1.setCategory(1406);
         b1.setPage(666);
-        b1.setPubDate(new Date());
+        b1.setPubDate(Date.valueOf(LocalDate.now()));
         b1.setPublisher("朝鲜劳动党废土出版社");
         mapper.insert(b1);
     }
+
+
 
     @Before
     public void testInsert() throws Exception {
@@ -49,7 +52,7 @@ public class BookInfoMapperTest {
         b1.setName("蜜汁Scala：卷I 出入师门");
         b1.setCategory(1406);
         b1.setPage(666);
-        b1.setPubDate(new Date());
+        b1.setPubDate(Date.valueOf(LocalDate.now()));
         b1.setPublisher("朝鲜劳动党废土出版社");
         mapper.insert(b1);
 
@@ -58,7 +61,7 @@ public class BookInfoMapperTest {
         b2.setName("蜜汁Scala：卷II 风雪残云");
         b2.setCategory(1406);
         b2.setPage(888);
-        b2.setPubDate(new Date());
+        b2.setPubDate(Date.valueOf(LocalDate.now()));
         b2.setPublisher("朝鲜劳动党黑暗料理出版社");
         mapper.insert(b2);
     }
@@ -93,7 +96,7 @@ public class BookInfoMapperTest {
         b2.setName("蜜汁Scala：卷II 风雪残云");
         b2.setCategory(1406);
         b2.setPage(888);
-        b2.setPubDate(new Date());
+        b2.setPubDate(Date.valueOf(LocalDate.now()));
         b2.setPublisher("朝鲜劳动党中央书鸡菊");
         mapper.update(b2);
     }

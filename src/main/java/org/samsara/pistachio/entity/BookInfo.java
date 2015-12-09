@@ -1,6 +1,6 @@
 package org.samsara.pistachio.entity;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  * Book basic info entity
@@ -12,6 +12,7 @@ public class BookInfo {
     private String name;
     private String author;
     private Date pubDate;
+
     private String publisher;
     private Integer page;
     private Integer category;

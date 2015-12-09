@@ -1,5 +1,5 @@
 group 'Samsara'
-version '0.1.14'
+version '0.1.30'
 
 apply plugin: 'java'
 apply plugin: 'war'
@@ -23,6 +23,8 @@ dependencies {
     // Servlet
     compile 'javax.servlet:javax.servlet-api:3.1.0'
     compile 'javax.servlet.jsp:jsp-api:2.2'
+
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
 
     // Spring framework dependencies
     compile 'org.springframework:spring-core:4.2.3.RELEASE'

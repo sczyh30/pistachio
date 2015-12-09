@@ -28,7 +28,9 @@
     </select>
 
     <select id="getAllByAuthor" parameterType="java.lang.String" resultType="org.samsara.pistachio.entity.BookInfo">
-        SELECT * FROM book_info
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM book_info
         WHERE author = #{author,jdbcType=VARCHAR}
     </select>
 
