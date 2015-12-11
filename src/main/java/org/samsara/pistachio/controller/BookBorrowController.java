@@ -19,9 +19,30 @@ public class BookBorrowController {
     @Resource
     BorrowService borrowService;
 
-    @RequestMapping(value = "/api/book/{id}", method = RequestMethod.PUT)
+    /**
+     * Route of borrowing a book
+     * @param id ISBN of the book
+     * @param bid borrow id of the user
+     * @return if parameters are appropriate, return the status callback; else return error code.
+     */
+    @RequestMapping(value = "/api/book/borrow/{id}", method = RequestMethod.PUT)
     public Object borrowBook(@PathVariable(value = "id") String id,
+                             @RequestParam(value = "bid") int bid) {
+
+        return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, RE_MSG_BOOK_BORROW_ERROR);
+    }
+
+    /**
+     * Route of returning a book
+     * @param id ISBN of the book
+     * @param bid borrow id of the user
+     * @return if parameters are appropriate, return the status callback; else return error code.
+     */
+    @RequestMapping(value = "/api/book/ret/{id}", method = RequestMethod.PUT)
+    public Object returnBook(@PathVariable(value = "id") String id,
                              @RequestParam(value = "bid") int bid) {
         return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, RE_MSG_BOOK_BORROW_ERROR);
     }
+
+
 }

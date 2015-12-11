@@ -8,7 +8,13 @@ import org.samsara.pistachio.entity.BorrowStatus;
  * @author sczyh30
  */
 public interface BorrowStatusMapper {
-    int deleteByPrimaryKey(Integer bid);
+
+    /**
+     * Remove all borrow status record by bid
+     * @param bid borrow id
+     * @return if the process is successiful; else false
+     */
+    int remove(Integer bid);
 
     boolean remove(Integer bid, String ISBN);
 

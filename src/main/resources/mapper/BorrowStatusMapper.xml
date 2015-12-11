@@ -17,14 +17,14 @@
         from borrow_status
         where bid = #{bid,jdbcType=INTEGER}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="remove" parameterType="java.lang.Integer">
         DELETE FROM borrow_status
         WHERE bid = #{bid,jdbcType=INTEGER}
     </delete>
 
     <delete id="remove">
         DELETE FROM borrow_status
-        WHERE bid = #{bid,jdbcType=INTEGER} and ISBN = #{ISBN,jdbcType=VARCHAR}
+        WHERE bid = #{bid,jdbcType=INTEGER} AND ISBN = #{ISBN,jdbcType=VARCHAR}
     </delete>
 
     <insert id="insert" parameterType="org.samsara.pistachio.entity.BorrowStatus">
