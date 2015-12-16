@@ -42,10 +42,15 @@ public class BookController {
             return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
     }
 
-    @RequestMapping(value = "/api/book/new")
-    public Object test1() {
-        List<BookInfo> list = service.getAllBooksByAuthor("sczyh30");
-        list.forEach(System.out::println);
+    /**
+     * Route of getting latest books.<br>
+     * URL:<pre><code>/api/book/latest</code></pre><br>
+     * Method: <strong>GET</strong>
+     * @return the book list
+     */
+    @RequestMapping(value = "/api/book/latest")
+    public Object getLatest() {
+        List<BookInfo> list = service.getLatestBook();
         if(list != null)
             return list;
         else

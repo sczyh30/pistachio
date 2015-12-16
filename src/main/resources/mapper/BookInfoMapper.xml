@@ -38,6 +38,13 @@
         SELECT name FROM book_info
         WHERE author = #{author,jdbcType=VARCHAR}
     </select>
+    <select id="getLatest" resultType="org.samsara.pistachio.entity.BookInfo">
+        SELECT * FROM book_info
+    </select>
+
+    <select id="getLatestLimit" resultType="org.samsara.pistachio.entity.BookInfo">
+        SELECT * FROM book_info
+    </select>
 
     <delete id="remove" parameterType="java.lang.String">
         DELETE FROM book_info

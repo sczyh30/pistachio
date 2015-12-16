@@ -23,4 +23,8 @@ public class UserService {
     public User getUser(String username) {
         return userMapper.getByName(username);
     }
+
+    public void logout() {
+
+    }
 }

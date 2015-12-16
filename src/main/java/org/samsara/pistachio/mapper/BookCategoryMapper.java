@@ -2,6 +2,8 @@ package org.samsara.pistachio.mapper;
 
 import org.samsara.pistachio.entity.BookCategory;
 
+import java.util.List;
+
 /**
  * Samsara Pistachio
  * Book category mapper interface
@@ -14,16 +16,20 @@ public interface BookCategoryMapper {
      * @param cid category id
      * @return true if the process is successful; else false.
      */
-    int remove(Integer cid);
+    boolean remove(Integer cid);
+
+    boolean removeByName(String category);
+
+    List<String> getAll();
 
     /**
      * Add a category to the database
      * @param category category entity
      * @return true if the process is successful; else false.
      */
-    int add(BookCategory category);
+    boolean add(BookCategory category);
 
-    int insertSelective(BookCategory category);
+    boolean insertSelective(BookCategory category);
 
     /**
      * Get the category entity by category id(cid)
@@ -51,5 +57,5 @@ public interface BookCategoryMapper {
      * @param record the category entity that shall update
      * @return true if the process is successful; else false.
      */
-    int update(BookCategory record);
+    boolean update(BookCategory record);
 }

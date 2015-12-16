@@ -4,7 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * Created by sczyh30 on 15-12-9.
+ * Samsara Pistachio
+ * Admin basic controller
+ * @author sczyh30
  */
 @Controller
 public class AdminController {

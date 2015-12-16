@@ -29,7 +29,7 @@ public class BookBorrowController {
     public Object borrowBook(@PathVariable(value = "id") String id,
                              @RequestParam(value = "bid") int bid) {
 
-        return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, RE_MSG_BOOK_BORROW_ERROR);
+        return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, "", RE_MSG_BOOK_BORROW_ERROR);
     }
 
     /**
@@ -41,7 +41,7 @@ public class BookBorrowController {
     @RequestMapping(value = "/api/book/ret/{id}", method = RequestMethod.PUT)
     public Object returnBook(@PathVariable(value = "id") String id,
                              @RequestParam(value = "bid") int bid) {
-        return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, RE_MSG_BOOK_BORROW_ERROR);
+        return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, "", RE_MSG_BOOK_BORROW_ERROR);
     }
 
 

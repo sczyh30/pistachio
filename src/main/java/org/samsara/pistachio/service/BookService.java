@@ -39,6 +39,15 @@ public class BookService {
     }
 
     /**
+     * Get latest books
+     * @return list of the books
+     */
+    @Transactional(readOnly = true)
+    public List<BookInfo> getLatestBook() {
+        return infoMapper.getLatest();
+    }
+
+    /**
      * Get the book info by book name
      * @param name name of the book
      * @return the BookInfo entity

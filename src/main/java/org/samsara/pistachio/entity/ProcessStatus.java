@@ -8,12 +8,14 @@ package org.samsara.pistachio.entity;
 public class ProcessStatus {
 
     private int code;
+    private String psid;
     private String msg;
 
     public ProcessStatus() {}
 
-    public ProcessStatus(int code, String msg) {
+    public ProcessStatus(int code, String psid, String msg) {
         this.code = code;
+        this.psid = psid;
         this.msg = msg;
     }
 
