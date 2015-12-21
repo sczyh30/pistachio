@@ -18,6 +18,11 @@ public class CategoryService {
     @Resource
     private BookCategoryMapper mapper;
 
+    /**
+     * Add a category entity to the database
+     * @param category category entity
+     * @return status
+     */
     public boolean addCategory(BookCategory category) {
         return mapper.add(category);
     }
@@ -34,6 +39,10 @@ public class CategoryService {
         return mapper.removeByName(name);
     }
 
+    /**
+     * Get all categories of books
+     * @return the query result
+     */
     public List<String> getAllCategories() {
         return mapper.getAll();
     }

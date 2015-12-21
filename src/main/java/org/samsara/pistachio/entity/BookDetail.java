@@ -6,33 +6,33 @@ package org.samsara.pistachio.entity;
  */
 public class BookDetail {
 
-    private String ISBN;
+    //private String ISBN;
 
     private String summary;
 
     private String authorSummary;
 
-    private String category;
+    private String classification;
 
     private String categoryDetail;
 
     public BookDetail() {}
 
-    public BookDetail(String ISBN, String summary, String authorSummary, String category, String categoryDetail) {
-        this.ISBN = ISBN;
+    public BookDetail(String summary, String authorSummary, String classification, String categoryDetail) {
+        //this.ISBN = ISBN;
         this.summary = summary;
         this.authorSummary = authorSummary;
-        this.category = category;
+        this.classification = classification;
         this.categoryDetail = categoryDetail;
     }
 
-    public String getISBN() {
+    /*public String getISBN() {
         return ISBN;
     }
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN == null ? null : ISBN.trim();
-    }
+    }*/
 
     public String getSummary() {
         return summary;
@@ -50,12 +50,12 @@ public class BookDetail {
         this.authorSummary = authorSummary == null ? null : authorSummary.trim();
     }
 
-    public String getCategory() {
-        return category;
+    public String getClassification() {
+        return classification;
     }
 
-    public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
+    public void setClassification(String classification) {
+        this.classification = classification == null ? null : classification.trim();
     }
 
     public String getCategoryDetail() {
@@ -69,10 +69,10 @@ public class BookDetail {
     @Override
     public String toString() {
         return "Book Detail -> {" +
-                "ISBN='" + ISBN + '\'' +
-                ", summary='" + summary + '\'' +
+                //"ISBN='" + ISBN + '\'' +
+                "summary='" + summary + '\'' +
                 ", authorSummary='" + authorSummary + '\'' +
-                ", category='" + category + '\'' +
+                ", classification='" + classification + '\'' +
                 '}';
     }
 }

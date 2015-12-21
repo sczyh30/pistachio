@@ -16,13 +16,23 @@ public interface BookDetailMapper {
      */
     boolean remove(String ISBN);
 
-    int insert(BookDetail record);
+    /**
+     * Insert a book detail entity to the database
+     * @param record book detail entity
+     * @return the status
+     */
+    boolean insert(BookDetail record);
 
-    int insertSelective(BookDetail record);
+    boolean insertSelective(BookDetail record);
 
+    /**
+     * Get the book detail entity by ISBN
+     * @param ISBN ISBN
+     * @return the entity
+     */
     BookDetail getDetail(String ISBN);
 
-    int updateByPrimaryKeySelective(BookDetail record);
+    boolean updateByPrimaryKeySelective(BookDetail record);
 
-    int update(BookDetail record);
+    boolean update(BookDetail record);
 }

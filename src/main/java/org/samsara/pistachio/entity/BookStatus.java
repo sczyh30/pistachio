@@ -6,7 +6,7 @@ package org.samsara.pistachio.entity;
  */
 public class BookStatus {
 
-    private String ISBN;
+    //private String ISBN;
 
     private Integer numEntire;
 
@@ -14,13 +14,15 @@ public class BookStatus {
 
     private Boolean status;
 
-    public String getISBN() {
+    private String msg;
+
+    /*public String getISBN() {
         return ISBN;
     }
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN == null ? null : ISBN.trim();
-    }
+    }*/
 
     public Integer getNumEntire() {
         return numEntire;
@@ -46,13 +48,21 @@ public class BookStatus {
         this.status = status;
     }
 
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
     @Override
     public String toString() {
-        return "BookStatus -> {" +
-                "ISBN='" + ISBN + '\'' +
-                ", numEntire=" + numEntire +
+        return "BookStatus => {" +
+                "numEntire=" + numEntire +
                 ", numPresent=" + numPresent +
                 ", status=" + status +
+                ", msg='" + msg + '\'' +
                 '}';
     }
 }

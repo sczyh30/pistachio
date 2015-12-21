@@ -24,7 +24,4 @@ public class UserService {
         return userMapper.getByName(username);
     }
 
-    public void logout() {
-
-    }
 }

@@ -19,7 +19,8 @@ public class BookInfo {
     private Integer page;
     private Integer category;
 
-    BookDetail detail;
+    private BookDetail detail;
+    private BookStatus status;
 
     public String getISBN() {
         return ISBN;
@@ -93,6 +94,14 @@ public class BookInfo {
         this.detail = detail;
     }
 
+    public BookStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BookStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "BookInfo -> {" +
@@ -105,6 +114,7 @@ public class BookInfo {
                 ", page=" + page +
                 ", category=" + category +
                 ", detail=" + detail +
+                ", status=" + status +
                 '}';
     }
 }

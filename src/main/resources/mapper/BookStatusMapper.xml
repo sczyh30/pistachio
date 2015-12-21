@@ -3,14 +3,15 @@
 <mapper namespace="org.samsara.pistachio.mapper.BookStatusMapper">
 
     <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BookStatus">
-        <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
+        <id column="ISBN" jdbcType="VARCHAR"/>
         <result column="num_entire" property="numEntire" jdbcType="INTEGER"/>
         <result column="num_present" property="numPresent" jdbcType="INTEGER"/>
-        <result column="status" property="status" jdbcType="BIT"/>
+        <result column="msg" property="msg" jdbcType="VARCHAR"/>
+        <result column="status" property="status" javaType="boolean"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        ISBN, num_entire, num_present, status
+        num_entire, num_present, status, msg
     </sql>
 
     <select id="getStatus" resultMap="BaseResultMap" parameterType="java.lang.String">
