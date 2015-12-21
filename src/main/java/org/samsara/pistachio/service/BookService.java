@@ -1,7 +1,9 @@
 package org.samsara.pistachio.service;
 
 import org.samsara.pistachio.entity.BookInfo;
+import org.samsara.pistachio.entity.BookStatus;
 import org.samsara.pistachio.mapper.BookInfoMapper;
+import org.samsara.pistachio.mapper.BookStatusMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,13 @@ public class BookService {
 
     @Resource
     private BookInfoMapper infoMapper;
+
+    @Resource
+    private BookStatusMapper statusMapper;
+
+    public BookStatus getStatus(String ISBN) {
+        return statusMapper.getStatus(ISBN);
+    }
 
     /**
      * Add a book to the database

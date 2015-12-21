@@ -9,13 +9,18 @@ import org.samsara.pistachio.entity.BookDetail;
  */
 public interface BookDetailMapper {
 
+    /**
+     * Remove a book detail entry from the database
+     * @param ISBN ISBN of the book
+     * @return the status
+     */
     boolean remove(String ISBN);
 
     int insert(BookDetail record);
 
     int insertSelective(BookDetail record);
 
-    BookDetail get(String ISBN);
+    BookDetail getDetail(String ISBN);
 
     int updateByPrimaryKeySelective(BookDetail record);
 

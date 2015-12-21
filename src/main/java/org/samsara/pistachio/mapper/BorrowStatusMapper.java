@@ -12,10 +12,8 @@ public interface BorrowStatusMapper {
     /**
      * Remove all borrow status record by bid
      * @param bid borrow id
-     * @return if the process is successiful; else false
+     * @return if the process is successful; else false
      */
-    int remove(Integer bid);
-
     boolean remove(Integer bid, String ISBN);
 
     int insert(BorrowStatus record);

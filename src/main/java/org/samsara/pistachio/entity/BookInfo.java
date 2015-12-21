@@ -19,6 +19,8 @@ public class BookInfo {
     private Integer page;
     private Integer category;
 
+    BookDetail detail;
+
     public String getISBN() {
         return ISBN;
     }
@@ -83,6 +85,14 @@ public class BookInfo {
         this.joinDate = joinDate;
     }
 
+    public BookDetail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(BookDetail detail) {
+        this.detail = detail;
+    }
+
     @Override
     public String toString() {
         return "BookInfo -> {" +
@@ -94,6 +104,7 @@ public class BookInfo {
                 ", publisher='" + publisher + '\'' +
                 ", page=" + page +
                 ", category=" + category +
+                ", detail=" + detail +
                 '}';
     }
 }

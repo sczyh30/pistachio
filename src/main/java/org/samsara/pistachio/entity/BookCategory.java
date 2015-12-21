@@ -10,6 +10,13 @@ public class BookCategory {
 
     private String name;
 
+    public BookCategory() {}
+
+    public BookCategory(Integer cid, String name) {
+        this.cid = cid;
+        this.name = name;
+    }
+
     public BookCategory(String name) {
         this.name = name;
     }

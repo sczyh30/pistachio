@@ -7,6 +7,7 @@ import org.samsara.pistachio.service.BookService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import javax.annotation.Resource;
 
@@ -40,6 +41,7 @@ public class BookController {
             return book;
         else
             return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
+        //    return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
     }
 
     /**

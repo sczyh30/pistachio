@@ -14,13 +14,16 @@ public class BookDetail {
 
     private String category;
 
+    private String categoryDetail;
+
     public BookDetail() {}
 
-    public BookDetail(String ISBN, String summary, String authorSummary, String category) {
+    public BookDetail(String ISBN, String summary, String authorSummary, String category, String categoryDetail) {
         this.ISBN = ISBN;
         this.summary = summary;
         this.authorSummary = authorSummary;
         this.category = category;
+        this.categoryDetail = categoryDetail;
     }
 
     public String getISBN() {
@@ -53,6 +56,14 @@ public class BookDetail {
 
     public void setCategory(String category) {
         this.category = category == null ? null : category.trim();
+    }
+
+    public String getCategoryDetail() {
+        return categoryDetail;
+    }
+
+    public void setCategoryDetail(String categoryDetail) {
+        this.categoryDetail = categoryDetail;
     }
 
     @Override

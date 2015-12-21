@@ -101,6 +101,15 @@ public class BookInfoMapperTest {
         mapper.update(b2);
     }
 
+    @Test
+    public void testVagueSearch() throws Exception {
+        System.out.println("=========Vague Author=========");
+        mapper.getAllByVgAuthor("sczy").forEach(System.out::println);
+        System.out.println("=========Vague Name=========");
+        mapper.getAllByVgName("Scala").forEach(System.out::println);
+        System.out.println("=========Vague End=========");
+    }
+
     @After
     public void testRemove() throws Exception {
         mapper.remove("9787530215210");

@@ -25,9 +25,11 @@ public class BookBorrowController {
      * @param bid borrow id of the user
      * @return if parameters are appropriate, return the status callback; else return error code.
      */
-    @RequestMapping(value = "/api/book/borrow/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/book/borrow/{id}", method = RequestMethod.POST)
     public Object borrowBook(@PathVariable(value = "id") String id,
-                             @RequestParam(value = "bid") int bid) {
+                             @RequestParam(value = "bid") int bid,
+                             @RequestParam(value = "from") String from,
+                             @RequestParam(value = "due") int due) {
 
         return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, "", RE_MSG_BOOK_BORROW_ERROR);
     }
@@ -38,7 +40,7 @@ public class BookBorrowController {
      * @param bid borrow id of the user
      * @return if parameters are appropriate, return the status callback; else return error code.
      */
-    @RequestMapping(value = "/api/book/ret/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/api/book/ret/{id}", method = RequestMethod.POST)
     public Object returnBook(@PathVariable(value = "id") String id,
                              @RequestParam(value = "bid") int bid) {
         return new ProcessStatus(RE_CODE_BOOK_BORROW_ERROR, "", RE_MSG_BOOK_BORROW_ERROR);

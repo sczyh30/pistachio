@@ -5,45 +5,67 @@
         <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="author" property="author" jdbcType="VARCHAR"/>
-        <result column="pub_date" property="pubDate" jdbcType="DATE"/>
+        <result column="pub_date" property="pubDate" javaType="java.sql.Date"/>
         <result column="publisher" property="publisher" jdbcType="VARCHAR"/>
         <result column="page" property="page" jdbcType="INTEGER"/>
         <result column="category" property="category" jdbcType="INTEGER"/>
+        <result column="join_date" property="joinDate" javaType="java.sql.Timestamp"/>
+
+        <association property="detail" javaType="org.samsara.pistachio.entity.BookDetail">
+            <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
+            <result column="summary" property="summary" jdbcType="VARCHAR"/>
+            <result column="author_summary" property="authorSummary" jdbcType="VARCHAR"/>
+            <result column="category" property="category" jdbcType="VARCHAR"/>
+            <result column="category_detail" property="categoryDetail" jdbcType="VARCHAR"/>
+        </association>
     </resultMap>
 
     <sql id="Base_Column_List">
-        ISBN, name, author, pub_date, publisher, page, category
+        book_info.ISBN, book_info.name, book_info.author, book_info.pub_date, book_info.publisher, book_info.page, book_info.category,
+        book_detail.summary, book_detail.author_summary, book_detail.category, book_detail.category_detail
     </sql>
 
     <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
-        from book_info
-        where ISBN = #{ISBN,jdbcType=VARCHAR}
+        from book_info, book_detail
+        where book_info.ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
     <select id="getByName" resultMap="BaseResultMap" parameterType="java.lang.String">
-        SELECT <include refid="Base_Column_List"/> FROM book_info
-        WHERE name = #{name,jdbcType=VARCHAR}
+        SELECT <include refid="Base_Column_List"/>
+        FROM book_info, book_detail
+        WHERE book_info.name = #{name,jdbcType=VARCHAR}
     </select>
 
-    <select id="getAllByAuthor" parameterType="java.lang.String" resultType="org.samsara.pistachio.entity.BookInfo">
+    <select id="getAllByAuthor" resultMap="BaseResultMap" parameterType="java.lang.String" >
         SELECT
         <include refid="Base_Column_List"/>
-        FROM book_info
-        WHERE author = #{author,jdbcType=VARCHAR}
+        FROM book_info, book_detail
+        WHERE book_info.author = #{author,jdbcType=VARCHAR} and book_detail.ISBN = book_info.ISBN
     </select>
 
     <select id="getAllNameByAuthor" resultType="java.lang.String" parameterType="java.lang.String">
         SELECT name FROM book_info
-        WHERE author = #{author,jdbcType=VARCHAR}
+        WHERE book_info.author = #{author,jdbcType=VARCHAR}
     </select>
-    <select id="getLatest" resultType="org.samsara.pistachio.entity.BookInfo">
+    <select id="getLatest" resultMap="BaseResultMap">
         SELECT * FROM book_info
     </select>
 
-    <select id="getLatestLimit" resultType="org.samsara.pistachio.entity.BookInfo">
+    <select id="getLatestLimit" resultMap="BaseResultMap">
         SELECT * FROM book_info
+    </select>
+
+    <select id="getAllByVgName" resultMap="BaseResultMap">
+        SELECT * FROM book_info
+        WHERE book_info.name LIKE CONCAT('%',#{vague,jdbcType=VARCHAR},'%')
+    </select>
+
+    <select id="getAllByVgAuthor" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/>
+        FROM book_info, book_detail
+        WHERE book_info.author LIKE CONCAT('%',#{vague,jdbcType=VARCHAR},'%')
     </select>
 
     <delete id="remove" parameterType="java.lang.String">

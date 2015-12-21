@@ -37,4 +37,8 @@ public interface BookInfoMapper {
     int updateByPrimaryKeySelective(BookInfo record);
 
     boolean update(BookInfo record);
+
+    List<BookInfo> getAllByVgName(String vague);
+
+    List<BookInfo> getAllByVgAuthor(String vague);
 }

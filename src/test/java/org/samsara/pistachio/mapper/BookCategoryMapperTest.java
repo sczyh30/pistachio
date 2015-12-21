@@ -23,9 +23,7 @@ public class BookCategoryMapperTest {
 
     //@Test
     public void testAdd() throws Exception {
-        BookCategory c1 = new BookCategory();
-        c1.setCid(1407);
-        c1.setName("猥琐类");
+        BookCategory c1 = new BookCategory(1407, "猥琐类");
         mapper.add(c1);
     }
 

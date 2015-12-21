@@ -6,6 +6,8 @@
 Pistachio is an open-source project based on the *Data Structure Assignment, Project 6 - Book Management System*. 
 It is a complete book management system that can be used in product environment.
 
+##Summary
+
 ## License
 Pistachio is released under the [MIT License][].
 

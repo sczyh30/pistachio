@@ -20,12 +20,12 @@
         where ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
-    <select id="getEntire" resultType="java.lang.String">
+    <select id="getEntire" resultType="java.lang.Integer">
         SELECT num_entire FROM book_status
         WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
-    <select id="getPresent" resultType="java.lang.String">
+    <select id="getPresent" resultType="java.lang.Integer">
         SELECT num_present FROM book_status
         WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>

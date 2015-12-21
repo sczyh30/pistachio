@@ -6,11 +6,12 @@
         <result column="summary" property="summary" jdbcType="VARCHAR"/>
         <result column="author_summary" property="authorSummary" jdbcType="VARCHAR"/>
         <result column="category" property="category" jdbcType="VARCHAR"/>
+        <result column="category_detail" property="categoryDetail" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-        ISBN, summary, author_summary, category
+        ISBN, summary, author_summary, category, category_detail
     </sql>
-    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="getDetail" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from book_detail
