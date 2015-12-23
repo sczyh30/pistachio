@@ -21,13 +21,13 @@
         where ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
-    <select id="getEntire" resultType="java.lang.Integer">
-        SELECT num_entire FROM book_status
+    <select id="getEntire" resultType="int">
+        SELECT IFNULL(num_entire, -1) FROM book_status
         WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
-    <select id="getPresent" resultType="java.lang.Integer">
-        SELECT num_present FROM book_status
+    <select id="getPresent" resultType="int">
+        SELECT IFNULL(num_present, -1) FROM book_status
         WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
@@ -100,9 +100,14 @@
     </update>
 
     <update id="borrow">
+        UPDATE book_status
+        SET num_present = #{1,jdbcType=INTEGER} - 1
+        WHERE ISBN = #{0,jdbcType=VARCHAR}
     </update>
 
     <update id="ret">
-
+        UPDATE book_status
+        SET num_present = #{1,jdbcType=INTEGER} + 1
+        WHERE ISBN = #{0,jdbcType=VARCHAR}
     </update>
 </mapper>

@@ -27,14 +27,24 @@ public class CategoryService {
         return mapper.add(category);
     }
 
-    public boolean addCategory(String category) {
+    /*public boolean addCategory(String category) {
         return mapper.add(new BookCategory(category));
-    }
+    }*/
 
+    /**
+     * Remove a category by cid
+     * @param cid category id
+     * @return status
+     */
     public boolean removeCategory(int cid) {
         return mapper.remove(cid);
     }
 
+    /**
+     * Remove a category by category name
+     * @param name category name
+     * @return status
+     */
     public boolean removeCategory(String name) {
         return mapper.removeByName(name);
     }

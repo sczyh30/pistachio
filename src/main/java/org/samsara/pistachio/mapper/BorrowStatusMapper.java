@@ -2,6 +2,8 @@ package org.samsara.pistachio.mapper;
 
 import org.samsara.pistachio.entity.BorrowStatus;
 
+import java.util.List;
+
 /**
  * Samsara Pistachio
  * Book borrow status mapper interface
@@ -10,19 +12,41 @@ import org.samsara.pistachio.entity.BorrowStatus;
 public interface BorrowStatusMapper {
 
     /**
-     * Remove all borrow status record by bid
+     * Insert a borrow record
+     * @param record borrow record
+     * @return the status
+     */
+    boolean insert(BorrowStatus record);
+
+    /**
+     * Get all borrow records by bid
      * @param bid borrow id
+     * @return the status list
+     */
+    List<BorrowStatus> getAllRecordByBid(Integer bid);
+
+    String getStatusMsg(Integer bid, String ISBN);
+
+    BorrowStatus get(int bid, String ISBN);
+
+    /**
+     * Get all borrow records by ISBN
+     * @param ISBN ISBN of the book
+     * @return the status list
+     */
+    List<BorrowStatus> getAllRecordByISBN(String ISBN);
+
+    boolean update(BorrowStatus record);
+
+    boolean updateDay(int bid, String ISBN, String end, int due);
+
+    /**
+     * Remove borrow record by bid and ISBN
+     * @param bid borrow id
+     * @param ISBN ISBN of the book
      * @return if the process is successful; else false
      */
     boolean remove(Integer bid, String ISBN);
 
-    int insert(BorrowStatus record);
-
-    int insertSelective(BorrowStatus record);
-
-    BorrowStatus selectByPrimaryKey(Integer bid);
-
-    int updateByPrimaryKeySelective(BorrowStatus record);
-
-    int updateByPrimaryKey(BorrowStatus record);
+    boolean updateSelective(BorrowStatus record);
 }

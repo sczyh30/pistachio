@@ -10,6 +10,7 @@ import org.samsara.pistachio.entity.BookDetail;
 public interface BookDetailMapper {
 
     /**
+     * WARNING: THIS PROCESS SHOULD BE CAREFULLY!<br>
      * Remove a book detail entry from the database
      * @param ISBN ISBN of the book
      * @return the status

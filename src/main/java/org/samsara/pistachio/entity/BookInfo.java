@@ -19,6 +19,18 @@ public class BookInfo {
     private Integer page;
     private Integer category;
 
+    public BookInfo() {}
+
+    public BookInfo(String ISBN, String name, String author, Date pubDate, String publisher, Integer page, Integer category) {
+        this.ISBN = ISBN;
+        this.name = name;
+        this.author = author;
+        this.pubDate = pubDate;
+        this.publisher = publisher;
+        this.page = page;
+        this.category = category;
+    }
+
     private BookDetail detail;
     private BookStatus status;
 

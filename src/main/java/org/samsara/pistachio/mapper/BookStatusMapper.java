@@ -25,7 +25,7 @@ public interface BookStatusMapper {
      * @param ISBN ISBN of the book
      * @return status
      */
-    boolean borrow(String ISBN);
+    boolean borrow(String ISBN, int num);
 
     /**
      * Process of returning a book<br>
@@ -33,7 +33,7 @@ public interface BookStatusMapper {
      * @param ISBN ISBN of the book
      * @return status
      */
-    boolean ret(String ISBN);
+    boolean ret(String ISBN, int num);
 
     /**
      * Get the entire quantity of the book

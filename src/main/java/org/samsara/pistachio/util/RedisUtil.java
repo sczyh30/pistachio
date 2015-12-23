@@ -6,6 +6,8 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * Redis cache util class
+ * Manage the redis cache connection pool
+ * @author sczyh30
  * @since 0.2
  */
 public class RedisUtil {

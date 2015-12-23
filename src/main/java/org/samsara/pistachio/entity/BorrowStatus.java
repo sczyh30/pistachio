@@ -5,15 +5,32 @@ package org.samsara.pistachio.entity;
  * @author sczyh30
  */
 public class BorrowStatus {
+
     private Integer bid;
 
-    private String status;
+    private int status;
 
     private String ISBN;
 
     private String start;
 
     private String end;
+
+    private int due;
+
+    private String msg;
+
+    public BorrowStatus() {}
+
+    public BorrowStatus(Integer bid, String ISBN, int status, String start, String end, int due, String msg) {
+        this.bid = bid;
+        this.status = status;
+        this.ISBN = ISBN;
+        this.start = start;
+        this.end = end;
+        this.due = due;
+        this.msg = msg;
+    }
 
     public Integer getBid() {
         return bid;
@@ -23,12 +40,12 @@ public class BorrowStatus {
         this.bid = bid;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getISBN() {
@@ -53,5 +70,34 @@ public class BorrowStatus {
 
     public void setEnd(String end) {
         this.end = end == null ? null : end.trim();
+    }
+
+    public int getDue() {
+        return due;
+    }
+
+    public void setDue(int due) {
+        this.due = due;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
+
+    @Override
+    public String toString() {
+        return "BorrowStatus -> {" +
+                "bid=" + bid +
+                ", status='" + status + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", start='" + start + '\'' +
+                ", end='" + end + '\'' +
+                ", due=" + due +
+                ", msg='" + msg + '\'' +
+                '}';
     }
 }
