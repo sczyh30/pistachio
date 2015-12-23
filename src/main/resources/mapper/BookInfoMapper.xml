@@ -5,7 +5,7 @@
         <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
         <result column="name" property="name" jdbcType="VARCHAR"/>
         <result column="author" property="author" jdbcType="VARCHAR"/>
-        <result column="pub_date" property="pubDate" javaType="java.sql.Date"/>
+        <result column="pub_date" property="pubDate" javaType="java.util.Date"/>
         <result column="publisher" property="publisher" jdbcType="VARCHAR"/>
         <result column="page" property="page" jdbcType="INTEGER"/>
         <result column="category" property="category" jdbcType="INTEGER"/>

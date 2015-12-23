@@ -52,13 +52,15 @@ public final class Constant {
     public static final int BOOK_INFO_REMOVE_SUCCESS = 6675;
     public static final int BOOK_INFO_ADD_SUCCESS = 6676;
     public static final int BOOK_INFO_UPDATE_SUCCESS = 6677;
+
     public static final int BOOK_INFO_PROCESS_FAILURE = 3402;
 
 
     // Borrow Service Code (33__ bad, 666_ good)
+    public static final int BOOK_BRS_PROCESS_SUCCESS = 6666;
+
     public static final int BOOK_BORROWING_DUPLICATE = 3301;
     public static final int BOOK_BRS_PROCESS_FAILURE = 3302;
     public static final int BOOK_BORROWING_EMPTY_NO_PRESENT = 3311;
-    public static final int BOOK_BRS_PROCESS_SUCCESS = 6666;
     public static final int BOOK_USER_ENTRY_NOT_BORROWED = 3317;
 }

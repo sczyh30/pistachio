@@ -29,20 +29,26 @@ public class BookManageController {
 
     @RequestMapping(value = "/adm1n666/add/book/{id}", method = RequestMethod.PUT)
     public Object insertBook(@PathVariable(value = "id") String id,
-                             @RequestParam(value = "ISBN") String ISBN,
+                             //@RequestParam(value = "ISBN") String ISBN,
                              @RequestParam(value = "name") String name,
                              @RequestParam(value = "author") String author,
                              @RequestParam(value = "pubd") Date pubd,
                              @RequestParam(value = "publ") String publ,
                              @RequestParam(value = "page") int page,
                              @RequestParam(value = "cid") int cid) {
-        BookInfo info = new BookInfo()
-        return bookService.wrap()
+        BookInfo info = new BookInfo(id, name, author, pubd, publ, page, cid);
+        return bookService.wrap(bookService.addBook(info), 6);
     }
 
     @RequestMapping(value = "/adm1n666/update/book/{id}", method = RequestMethod.PUT)
-    public Object updateBook(@PathVariable(value = "id") String id) {
-
-        return new RequestError();
+    public Object updateBook(@PathVariable(value = "id") String id,
+                             @RequestParam(value = "name") String name,
+                             @RequestParam(value = "author") String author,
+                             @RequestParam(value = "pubd") Date pubd,
+                             @RequestParam(value = "publ") String publ,
+                             @RequestParam(value = "page") int page,
+                             @RequestParam(value = "cid") int cid) {
+        BookInfo info = new BookInfo(id, name, author, pubd, publ, page, cid);
+        return bookService.wrap(bookService.updateBook(info), 6);
     }
 }

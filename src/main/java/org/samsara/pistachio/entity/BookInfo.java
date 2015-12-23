@@ -1,6 +1,6 @@
 package org.samsara.pistachio.entity;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 
 /**

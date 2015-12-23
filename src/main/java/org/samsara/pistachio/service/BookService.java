@@ -6,10 +6,13 @@ import org.samsara.pistachio.entity.ProcessStatus;
 import org.samsara.pistachio.mapper.BookInfoMapper;
 import org.samsara.pistachio.mapper.BookStatusMapper;
 import org.samsara.pistachio.security.TokenGenerator;
+import org.samsara.pistachio.util.DateUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import static org.samsara.pistachio.Constant.*;
@@ -30,17 +33,19 @@ public class BookService {
 
     public ProcessStatus wrap(int code, int id) {
         String psid = TokenGenerator.generate(667788, code); // 667788 is a magic number
+        Timestamp timestamp = DateUtil.getStamp();
+        System.out.println(timestamp);
         switch (code) {
             case BOOK_INFO_REMOVE_SUCCESS:
-                return new ProcessStatus(code, psid, "book_info_remove_success", API_PROCESS_LEVEL_ADMIN, id);
+                return new ProcessStatus(code, psid, "book_info_remove_success", API_PROCESS_LEVEL_ADMIN, id, timestamp);
             case BOOK_INFO_ADD_SUCCESS:
-                return new ProcessStatus(code, psid, "book_info_add_success", API_PROCESS_LEVEL_ADMIN, id);
+                return new ProcessStatus(code, psid, "book_info_add_success", API_PROCESS_LEVEL_ADMIN, id, timestamp);
             case BOOK_INFO_UPDATE_SUCCESS:
-                return new ProcessStatus(code, psid, "book_info_update_success", API_PROCESS_LEVEL_ADMIN, id);
+                return new ProcessStatus(code, psid, "book_info_update_success", API_PROCESS_LEVEL_ADMIN, id, timestamp);
             case BOOK_INFO_PROCESS_FAILURE:
-                return new ProcessStatus(code, psid, "book_info_process_error", API_PROCESS_LEVEL_ADMIN, id);
+                return new ProcessStatus(code, psid, "book_info_process_error", API_PROCESS_LEVEL_ADMIN, id, timestamp);
             default:
-                return new ProcessStatus(4606, psid, "book_process_unknown", API_PROCESS_LEVEL_NO, id);
+                return new ProcessStatus(4606, psid, "book_process_unknown", API_PROCESS_LEVEL_NO, id, timestamp);
         }
     }
 
@@ -101,8 +106,8 @@ public class BookService {
      * @param bookInfo the BookInfo entity
      * @return true if update process is successful; else false
      */
-    public boolean updateBook(BookInfo bookInfo) {
-        return infoMapper.update(bookInfo);
+    public int updateBook(BookInfo bookInfo) {
+        return infoMapper.update(bookInfo) ? BOOK_INFO_UPDATE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
     }
 
     /**
@@ -113,7 +118,7 @@ public class BookService {
      * @return the status code
      */
     public int removeBook(String ISBN) {
-        return infoMapper.remove(ISBN) ? BOOK_INFO_PROCESS_FAILURE : BOOK_INFO_REMOVE_SUCCESS;
+        return infoMapper.remove(ISBN) ? BOOK_INFO_REMOVE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
     }
 
 

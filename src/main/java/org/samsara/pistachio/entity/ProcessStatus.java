@@ -1,5 +1,8 @@
 package org.samsara.pistachio.entity;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  * Samsara Pistachio
  * Process status entity
@@ -12,7 +15,7 @@ public class ProcessStatus {
     private String msg;
     private int level;
     private int userid;
-
+    private Timestamp time;
 
     public ProcessStatus() {}
 
@@ -22,12 +25,13 @@ public class ProcessStatus {
         this.msg = msg;
     }
 
-    public ProcessStatus(int code, String psid, String msg, int level, int userid) {
+    public ProcessStatus(int code, String psid, String msg, int level, int userid, Timestamp time) {
         this.code = code;
         this.psid = psid;
         this.msg = msg;
         this.level = level;
         this.userid = userid;
+        this.time = time;
     }
 
     public String getPsid() {
@@ -68,5 +72,13 @@ public class ProcessStatus {
 
     public void setUserid(int userid) {
         this.userid = userid;
+    }
+
+    public Date getTime() {
+        return time;
+    }
+
+    public void setTime(Timestamp time) {
+        this.time = time;
     }
 }

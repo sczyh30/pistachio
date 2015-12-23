@@ -33,10 +33,10 @@
             <mvc:mapping path="/api/*/*"/>
             <bean class="org.samsara.pistachio.interceptor.TestInterceptor"/>
         </mvc:interceptor>
-        <mvc:interceptor>
+        <!--<mvc:interceptor>
             <mvc:mapping path="/adm1n666/**"/>
             <bean class="org.samsara.pistachio.interceptor.AdminInterceptor"/>
-        </mvc:interceptor>
+        </mvc:interceptor>-->
         <mvc:interceptor>
             <mvc:mapping path="/adm1n233/auth"/>
             <bean class="org.samsara.pistachio.interceptor.AdminLoginInterceptor"/>
