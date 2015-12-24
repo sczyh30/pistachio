@@ -20,7 +20,9 @@ public class BookBorrowController {
     BorrowService borrowService;
 
     /**
-     * Route of borrowing a book
+     * Route of borrowing a book<br>
+     * URL:<code><strong>/api/book/borrow/{id}</strong></code><br>
+     * Method: <strong>POST</strong>
      * @param id ISBN of the book
      * @param bid borrow id of the user
      * @return if parameters are appropriate, return the status callback; else return error code.
@@ -32,11 +34,13 @@ public class BookBorrowController {
                              @RequestParam(value = "end") String end,
                              @RequestParam(value = "due") int due) {
         int code = borrowService.borrowBook(bid, id, start, end, due);
-        return borrowService.generateStatus(bid, code);
+        return borrowService.retAndRecord(bid, code);
     }
 
     /**
-     * Route of returning a book
+     * Route of returning a book<br>
+     * URL:<code><strong>/api/book/ret/{id}</strong></code><br>
+     * Method: <strong>POST</strong>
      * @param id ISBN of the book
      * @param bid borrow id of the user
      * @return if parameters are appropriate, return the status callback; else return error code.
@@ -45,7 +49,7 @@ public class BookBorrowController {
     public ProcessStatus returnBook(@PathVariable(value = "id") String id,
                              @RequestParam(value = "bid") int bid) {
         int code = borrowService.retBook(id, bid);
-        return borrowService.generateStatus(bid, code);
+        return borrowService.retAndRecord(bid, code);
     }
 
 

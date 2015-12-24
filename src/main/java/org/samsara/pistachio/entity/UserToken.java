@@ -11,7 +11,15 @@ public class UserToken {
 
     private String temp_token;
 
-    private String username;
+    private User user;
+
+    public UserToken() {}
+
+    public UserToken(int code, String temp_token, User user) {
+        this.code = code;
+        this.temp_token = temp_token;
+        this.user = user;
+    }
 
     public int getCode() {
         return code;
@@ -21,19 +29,19 @@ public class UserToken {
         this.code = code;
     }
 
-    public String getTemp_token() {
+    public String getTempToken() {
         return temp_token;
     }
 
-    public void setTemp_token(String temp_token) {
+    public void setTempToken(String temp_token) {
         this.temp_token = temp_token;
     }
 
-    public String getUsername() {
-        return username;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

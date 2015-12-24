@@ -5,6 +5,7 @@ import org.samsara.pistachio.entity.BookStatus;
 import org.samsara.pistachio.entity.ProcessStatus;
 import org.samsara.pistachio.mapper.BookInfoMapper;
 import org.samsara.pistachio.mapper.BookStatusMapper;
+import org.samsara.pistachio.mapper.ProcessStatusMapper;
 import org.samsara.pistachio.security.TokenGenerator;
 import org.samsara.pistachio.util.DateUtil;
 import org.springframework.stereotype.Service;
@@ -30,6 +31,15 @@ public class BookService {
 
     @Resource
     private BookStatusMapper statusMapper;
+
+    @Resource
+    private ProcessStatusMapper processStatusMapper;
+
+    public ProcessStatus retAndRecord(int code, int id) {
+        ProcessStatus status = wrap(code, id);
+        processStatusMapper.insert(status);
+        return status;
+    }
 
     public ProcessStatus wrap(int code, int id) {
         String psid = TokenGenerator.generate(667788, code); // 667788 is a magic number

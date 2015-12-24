@@ -18,6 +18,10 @@ public class BookSearchService {
     @Resource
     private BookInfoMapper infoMapper;
 
+    public BookInfo getByName(String name) {
+        return infoMapper.getByName(name);
+    }
+
     /**
      * Get all books by author name
      * @param author distinct name of author
@@ -35,7 +39,7 @@ public class BookSearchService {
         return infoMapper.getAllNameByAuthor(author);
     }
 
-    // TODO: NEED HIGHER PERFORMANCE
+    // TODO: NEED HIGHER PERFORMANCE!!!!
     /**
      * Get all books by author name (vague query)<br>
      * WARNING: this process could consume high because it can

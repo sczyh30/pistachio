@@ -10,7 +10,7 @@ public class User {
 
     private Integer uid;
 
-    private Integer borrowId;
+    private int borrowId;
 
     private String username;
 
@@ -24,6 +24,8 @@ public class User {
 
     private String email;
 
+    private int bkst; // Book borrow auth
+
     public Integer getUid() {
         return uid;
     }
@@ -32,7 +34,7 @@ public class User {
         this.uid = uid;
     }
 
-    public Integer getBorrowId() {
+    public int getBorrowId() {
         return borrowId;
     }
 
@@ -86,6 +88,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public int getBkst() {
+        return bkst;
+    }
+
+    public void setBkst(int bkst) {
+        this.bkst = bkst;
     }
 
     @Override

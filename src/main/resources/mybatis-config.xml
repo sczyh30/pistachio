@@ -39,6 +39,7 @@
         <mapper resource="mapper/BookStatusMapper.xml"/>
         <mapper resource="mapper/BorrowStatusMapper.xml"/>
         <mapper resource="mapper/BookCategoryMapper.xml"/>
+        <mapper resource="mapper/ProcessStatusMapper.xml"/>
 
     </mappers>
 

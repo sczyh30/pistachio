@@ -1,6 +1,5 @@
 package org.samsara.pistachio.entity;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -15,7 +14,7 @@ public class ProcessStatus {
     private String msg;
     private int level;
     private int userid;
-    private Timestamp time;
+    private Date entryTime;
 
     public ProcessStatus() {}
 
@@ -25,13 +24,13 @@ public class ProcessStatus {
         this.msg = msg;
     }
 
-    public ProcessStatus(int code, String psid, String msg, int level, int userid, Timestamp time) {
+    public ProcessStatus(int code, String psid, String msg, int level, int userid, Date entryTime) {
         this.code = code;
         this.psid = psid;
         this.msg = msg;
         this.level = level;
         this.userid = userid;
-        this.time = time;
+        this.entryTime = entryTime;
     }
 
     public String getPsid() {
@@ -75,10 +74,22 @@ public class ProcessStatus {
     }
 
     public Date getTime() {
-        return time;
+        return entryTime;
     }
 
-    public void setTime(Timestamp time) {
-        this.time = time;
+    public void setTime(Date time) {
+        this.entryTime = time;
+    }
+
+    @Override
+    public String toString() {
+        return "ProcessStatus => {" +
+                "code=" + code +
+                ", psid='" + psid + '\'' +
+                ", msg='" + msg + '\'' +
+                ", level=" + level +
+                ", userid=" + userid +
+                ", entryTime=" + entryTime +
+                '}';
     }
 }

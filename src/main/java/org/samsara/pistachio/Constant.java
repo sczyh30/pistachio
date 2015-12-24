@@ -9,8 +9,13 @@ package org.samsara.pistachio;
 public final class Constant {
 
     // API Version
-    public static final String API_VERSION = "PAPIv1a2";
+    public static final String API_VERSION = "PAPIv1";
 
+    public static final int API_LOGIN_SUCCESS = 2000;
+    public static final int API_REGISTER_SUCCESS = 2006;
+
+    public static final int API_LOGIN_FAIL = 4101;
+    public static final int API_LOGIN_DUPLICATE = 4104;
 
     public static final int API_PROCESS_LEVEL_ADMIN = 2;
     public static final int API_PROCESS_LEVEL_COMMON = 1;
@@ -19,6 +24,7 @@ public final class Constant {
 
     // API URL
     public static final String API_LOGIN = "/api/login";
+    public static final String API_LOGOUT = "/api/logout";
     public static final String API_GET_VERSION = "/api/v";
     public static final String API_GET_BOOK_INFO = "/api/book/";
 

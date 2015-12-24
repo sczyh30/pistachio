@@ -43,7 +43,7 @@ public class BookInfoMapperTest {
 
 
 
-    @Before
+    //@Before
     public void testInsert() throws Exception {
         BookInfo b1 = new BookInfo();
         BookInfo b2 = new BookInfo();
@@ -110,7 +110,7 @@ public class BookInfoMapperTest {
         System.out.println("=========Vague End=========");
     }
 
-    @After
+    //@After
     public void testRemove() throws Exception {
         mapper.remove("9787530215210");
         mapper.remove("9787530215216");

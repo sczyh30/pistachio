@@ -5,6 +5,7 @@ import org.samsara.pistachio.entity.BorrowStatus;
 import org.samsara.pistachio.entity.ProcessStatus;
 import org.samsara.pistachio.mapper.BookStatusMapper;
 import org.samsara.pistachio.mapper.BorrowStatusMapper;
+import org.samsara.pistachio.mapper.ProcessStatusMapper;
 import org.samsara.pistachio.security.TokenGenerator;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,21 @@ public class BorrowService {
     @Resource
     BookStatusMapper bookBorrowMapper;
 
+    @Resource
+    private ProcessStatusMapper processStatusMapper;
+
+    public ProcessStatus retAndRecord(int bid, int code) {
+        ProcessStatus status = generateStatus(bid, code);
+        processStatusMapper.insert(status);
+        return status;
+    }
+
+    /**
+     * Generate the process record entity
+     * @param bid borrow id
+     * @param code req_code
+     * @return the process record entity
+     */
     public ProcessStatus generateStatus(int bid, int code) {
         String psid = TokenGenerator.generate(bid,code);
         switch (code) {
