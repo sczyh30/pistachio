@@ -27,12 +27,12 @@ public class BookCategoryMapperTest {
         mapper.add(c1);
     }
 
-    @Test
+    //@Test
     public void testGet() throws Exception {
         System.out.println(mapper.get(1407));
     }
 
-    @Test
+    //@Test
     public void testGetName() throws Exception {
         System.out.println(mapper.getName(1407));
     }

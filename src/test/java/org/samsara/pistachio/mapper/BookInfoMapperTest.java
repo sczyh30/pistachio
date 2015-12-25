@@ -66,21 +66,21 @@ public class BookInfoMapperTest {
         mapper.insert(b2);
     }
 
-    @Test
+    //@Test
     public void testGet() throws Exception {
         System.out.println("-----------COMMON GET TEST-----------");
         BookInfo book = mapper.get("9787530215216");
         System.out.println(book);
     }
 
-    @Test
+    //@Test
     public void testGetByName() throws Exception {
         System.out.println("-----------GET_BY_NAME TEST-----------");
         BookInfo book = mapper.getByName("蜜汁Scala：卷II 风雪残云");
         System.out.println(book);
     }
 
-    @Test
+    //@Test
     public void testGetAllByAuthor() throws Exception {
         System.out.println("-----------AUTHOR TEST-----------");
         List<BookInfo> list = mapper.getAllByAuthor("sczyh30");
@@ -88,7 +88,7 @@ public class BookInfoMapperTest {
 
     }
 
-    @Test
+    //@Test
     public void testUpdate() throws Exception {
         BookInfo b2 = new BookInfo();
         b2.setAuthor("sczyh30");
@@ -101,7 +101,7 @@ public class BookInfoMapperTest {
         mapper.update(b2);
     }
 
-    @Test
+    //@Test
     public void testVagueSearch() throws Exception {
         System.out.println("=========Vague Author=========");
         mapper.getAllByVgAuthor("sczy").forEach(System.out::println);
