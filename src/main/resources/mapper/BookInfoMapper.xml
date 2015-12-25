@@ -36,7 +36,7 @@
     <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
         select <include refid="Base_Column_List"/>
         from book_info, book_detail, book_status
-        where book_info.ISBN = #{ISBN,jdbcType=VARCHAR}
+        where book_info.ISBN = #{ISBN,jdbcType=VARCHAR} and book_status.ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
     <select id="getByName" resultMap="BaseResultMap" parameterType="java.lang.String">
