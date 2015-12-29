@@ -9,11 +9,11 @@ import org.samsara.pistachio.entity.BookStatus;
  */
 public interface BookStatusMapper {
 
-    boolean remove(Integer isbn);
+    boolean remove(String isbn);
 
     boolean insert(BookStatus record);
 
-    BookStatus getStatus(Integer isbn);
+    BookStatus getStatus(String isbn);
 
     int updateByPrimaryKeySelective(BookStatus record);
 
@@ -25,7 +25,7 @@ public interface BookStatusMapper {
      * @param ISBN ISBN of the book
      * @return status
      */
-    boolean borrow(Integer ISBN);
+    boolean borrow(String ISBN, int num);
 
     /**
      * Process of returning a book<br>
@@ -33,19 +33,19 @@ public interface BookStatusMapper {
      * @param ISBN ISBN of the book
      * @return status
      */
-    boolean ret(Integer ISBN);
+    boolean ret(String ISBN, int num);
 
     /**
      * Get the entire quantity of the book
      * @param ISBN ISBN of the book
      * @return the entire quantity of the book
      */
-    int getEntire(Integer ISBN);
+    int getEntire(String ISBN);
 
     /**
      * Get the present quantity of the book
      * @param ISBN ISBN of the book
      * @return the present quantity of the book, 0 if empty
      */
-    int getPresent(Integer ISBN);
+    int getPresent(String ISBN);
 }

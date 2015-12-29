@@ -1,5 +1,16 @@
 #Pistachio Change Log
 
+## 2015-12-24, Version 0.3.22 build 169 (dev), @sczyh30
+
+### Notable changes
+
+- various changes!
+
+### Known issues
+
+- Performance should be optimized when use vague query (index)
+
+
 ## 2015-12-5, Version 0.1.2 build 29 (dev), @sczyh30
 
 ### Notable changes
@@ -9,9 +20,6 @@
 - add automatic test cases
 - initial optimization
 
-### Known issues
-
-None.
 
 ## 2015-12-1, Version 0.0.6 build 14 (dev), @sczyh30
 

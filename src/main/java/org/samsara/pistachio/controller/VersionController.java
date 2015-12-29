@@ -13,6 +13,12 @@ import static org.samsara.pistachio.Constant.*;
 @RestController
 public class VersionController {
 
+    /**
+     * Route of getting version of the API<br>
+     * The url API_GET_VERSION is in
+     * @see org.samsara.pistachio.Constant
+     * @return the version
+     */
     @RequestMapping(value = API_GET_VERSION)
     public String getVersion() {
         return API_VERSION;

@@ -30,7 +30,15 @@ public interface BookInfoMapper {
 
     List<String> getAllNameByAuthor(String author);
 
+    List<BookInfo> getLatest();
+
+    List<BookInfo> getLatestLimit(int num, int page);
+
     int updateByPrimaryKeySelective(BookInfo record);
 
     boolean update(BookInfo record);
+
+    List<BookInfo> getAllByVgName(String vague);
+
+    List<BookInfo> getAllByVgAuthor(String vague);
 }

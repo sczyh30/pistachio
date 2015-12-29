@@ -1,6 +1,7 @@
 package org.samsara.pistachio.entity;
 
 import java.util.Date;
+import java.sql.Timestamp;
 
 /**
  * Book basic info entity
@@ -12,9 +13,26 @@ public class BookInfo {
     private String name;
     private String author;
     private Date pubDate;
+    private Timestamp joinDate;
+
     private String publisher;
     private Integer page;
     private Integer category;
+
+    public BookInfo() {}
+
+    public BookInfo(String ISBN, String name, String author, Date pubDate, String publisher, Integer page, Integer category) {
+        this.ISBN = ISBN;
+        this.name = name;
+        this.author = author;
+        this.pubDate = pubDate;
+        this.publisher = publisher;
+        this.page = page;
+        this.category = category;
+    }
+
+    private BookDetail detail;
+    private BookStatus status;
 
     public String getISBN() {
         return ISBN;
@@ -72,6 +90,30 @@ public class BookInfo {
         this.category = category;
     }
 
+    public Timestamp getJoinDate() {
+        return joinDate;
+    }
+
+    public void setJoinDate(Timestamp joinDate) {
+        this.joinDate = joinDate;
+    }
+
+    public BookDetail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(BookDetail detail) {
+        this.detail = detail;
+    }
+
+    public BookStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(BookStatus status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "BookInfo -> {" +
@@ -79,9 +121,12 @@ public class BookInfo {
                 ", name='" + name + '\'' +
                 ", author='" + author + '\'' +
                 ", pubDate=" + pubDate +
+                ", joinDate=" + joinDate +
                 ", publisher='" + publisher + '\'' +
                 ", page=" + page +
                 ", category=" + category +
+                ", detail=" + detail +
+                ", status=" + status +
                 '}';
     }
 }

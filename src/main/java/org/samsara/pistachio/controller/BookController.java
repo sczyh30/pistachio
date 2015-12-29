@@ -7,8 +7,11 @@ import org.samsara.pistachio.service.BookService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException;
 
 import javax.annotation.Resource;
+
+import java.util.List;
 
 import static org.samsara.pistachio.Constant.*;
 
@@ -25,17 +28,34 @@ public class BookController {
 
     /**
      * Route of getting book basic info by ISBN.<br>
-     * URL:<code>/api/book/{id}</code><br>
-     * Method:<strong>PUT</strong>
+     * URL:<pre><code>/api/book/{id}</code></pre><br>
+     * Method: <strong>GET</strong>
      * @param id ISBN of the book
      * @return the book entity if ISBN exists and token is correct; else the request error
      */
     @RequestMapping(value = "/api/book/{id}")
     public Object getBookInfo(@PathVariable(value = "id") String id) {
         BookInfo book = service.getBook(id);
+        System.out.println(book);
         if(book != null)
             return book;
         else
             return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
+        //    return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
+    }
+
+    /**
+     * Route of getting latest books.<br>
+     * URL:<pre><code>/api/book/latest</code></pre><br>
+     * Method: <strong>GET</strong>
+     * @return the book list
+     */
+    @RequestMapping(value = "/api/book/latest")
+    public Object getLatest() {
+        List<BookInfo> list = service.getLatestBook();
+        if(list != null)
+            return list;
+        else
+            return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO);
     }
 }

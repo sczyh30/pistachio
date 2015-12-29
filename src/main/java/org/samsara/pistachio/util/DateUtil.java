@@ -1,8 +1,10 @@
 package org.samsara.pistachio.util;
 
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -39,5 +41,13 @@ public class DateUtil {
         else
             df = new SimpleDateFormat("yyyy-MM-dd");
         return df.parse(date);
+    }
+
+    /**
+     * Get the current timestamp
+     * @return timestamp
+     */
+    public static Timestamp getStamp() {
+        return Timestamp.valueOf(LocalDateTime.now());
     }
 }

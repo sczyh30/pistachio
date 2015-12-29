@@ -35,8 +35,12 @@
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/UserAuthMapper.xml"/>
         <mapper resource="mapper/BookInfoMapper.xml"/>
+        <mapper resource="mapper/BookDetailMapper.xml"/>
         <mapper resource="mapper/BookStatusMapper.xml"/>
         <mapper resource="mapper/BorrowStatusMapper.xml"/>
+        <mapper resource="mapper/BookCategoryMapper.xml"/>
+        <mapper resource="mapper/ProcessStatusMapper.xml"/>
+
     </mappers>
 
 </configuration>

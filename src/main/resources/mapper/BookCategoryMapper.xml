@@ -17,9 +17,18 @@
         where cid = #{cid,jdbcType=INTEGER}
     </select>
 
+    <select id="getAll" resultType="java.lang.String">
+        SELECT name FROM book_category
+    </select>
+
     <delete id="remove" parameterType="java.lang.Integer">
         DELETE FROM book_category
         WHERE cid = #{cid,jdbcType=INTEGER}
+    </delete>
+
+    <delete id="removeByName" parameterType="java.lang.String">
+        DELETE FROM book_category
+        WHERE name = #{cid,jdbcType=VARCHAR}
     </delete>
 
     <insert id="add" parameterType="org.samsara.pistachio.entity.BookCategory">

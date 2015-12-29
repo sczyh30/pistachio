@@ -21,20 +21,18 @@ public class BookCategoryMapperTest {
     @Resource
     private BookCategoryMapper mapper;
 
-    @Test
+    //@Test
     public void testAdd() throws Exception {
-        BookCategory c1 = new BookCategory();
-        c1.setCid(1407);
-        c1.setName("猥琐类");
+        BookCategory c1 = new BookCategory(1407, "猥琐类");
         mapper.add(c1);
     }
 
-    @Test
+    //@Test
     public void testGet() throws Exception {
         System.out.println(mapper.get(1407));
     }
 
-    @Test
+    //@Test
     public void testGetName() throws Exception {
         System.out.println(mapper.getName(1407));
     }

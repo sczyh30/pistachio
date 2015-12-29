@@ -9,12 +9,37 @@
     <context:component-scan base-package="org.samsara.pistachio.service" />
     <context:component-scan base-package="org.samsara.pistachio.controller"/>
 
+    <mvc:resources mapping="/assets0/**" location="/WEB-INF/pages/adm1n/static/"/>
+
     <mvc:annotation-driven/>
-    
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg type="java.lang.String" value="yyyy-MM-dd" />
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/"/>
+            <mvc:mapping path="/api/*/*"/>
             <bean class="org.samsara.pistachio.interceptor.TestInterceptor"/>
+        </mvc:interceptor>
+        <!--<mvc:interceptor>
+            <mvc:mapping path="/adm1n666/**"/>
+            <bean class="org.samsara.pistachio.interceptor.AdminInterceptor"/>
+        </mvc:interceptor>-->
+        <mvc:interceptor>
+            <mvc:mapping path="/adm1n233/auth"/>
+            <bean class="org.samsara.pistachio.interceptor.AdminLoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
 

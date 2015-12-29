@@ -2,15 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.samsara.pistachio.mapper.BookDetailMapper">
     <resultMap id="BaseResultMap" type="org.samsara.pistachio.entity.BookDetail">
-        <id column="ISBN" property="ISBN" jdbcType="VARCHAR"/>
+        <id column="ISBN" jdbcType="VARCHAR"/>
         <result column="summary" property="summary" jdbcType="VARCHAR"/>
         <result column="author_summary" property="authorSummary" jdbcType="VARCHAR"/>
-        <result column="category" property="category" jdbcType="VARCHAR"/>
+        <result column="classification" property="classification" jdbcType="VARCHAR"/>
+        <result column="category_detail" property="categoryDetail" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-        ISBN, summary, author_summary, category
+        summary, author_summary, classification, category_detail
     </sql>
-    <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
+    <select id="getDetail" resultMap="BaseResultMap" parameterType="java.lang.String">
         select
         <include refid="Base_Column_List"/>
         from book_detail
@@ -22,9 +23,9 @@
     </delete>
     <insert id="insert" parameterType="org.samsara.pistachio.entity.BookDetail">
         INSERT INTO book_detail (ISBN, summary, author_summary,
-                                 category)
+                                 classification)
         VALUES (#{ISBN,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{authorSummary,jdbcType=VARCHAR},
-                #{category,jdbcType=VARCHAR})
+                #{classification,jdbcType=VARCHAR})
     </insert>
     <insert id="insertSelective" parameterType="org.samsara.pistachio.entity.BookDetail">
         insert into book_detail
@@ -38,8 +39,8 @@
             <if test="authorSummary != null">
                 author_summary,
             </if>
-            <if test="category != null">
-                category,
+            <if test="classification != null">
+                classification,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -52,8 +53,8 @@
             <if test="authorSummary != null">
                 #{authorSummary,jdbcType=VARCHAR},
             </if>
-            <if test="category != null">
-                #{category,jdbcType=VARCHAR},
+            <if test="classification != null">
+                #{classification,jdbcType=VARCHAR},
             </if>
         </trim>
     </insert>
@@ -66,8 +67,8 @@
             <if test="authorSummary != null">
                 author_summary = #{authorSummary,jdbcType=VARCHAR},
             </if>
-            <if test="category != null">
-                category = #{category,jdbcType=VARCHAR},
+            <if test="classification != null">
+                classification = #{classification,jdbcType=VARCHAR},
             </if>
         </set>
         where ISBN = #{ISBN,jdbcType=VARCHAR}
@@ -76,7 +77,7 @@
         UPDATE book_detail
         SET summary        = #{summary,jdbcType=VARCHAR},
             author_summary = #{authorSummary,jdbcType=VARCHAR},
-            category       = #{category,jdbcType=VARCHAR}
+            classification       = #{classification,jdbcType=VARCHAR}
         WHERE ISBN = #{ISBN,jdbcType=VARCHAR}
     </update>
 </mapper>
