@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.List;
 
 import static org.samsara.pistachio.Constant.*;
@@ -35,12 +34,24 @@ public class BookService {
     @Resource
     private ProcessStatusMapper processStatusMapper;
 
+    /**
+     * Insert the process entity and then return to next func
+     * @param code process code
+     * @param id user id
+     * @return the process entity
+     */
     public ProcessStatus retAndRecord(int code, int id) {
         ProcessStatus status = wrap(code, id);
         processStatusMapper.insert(status);
         return status;
     }
 
+    /**
+     * Wrap and yield the process entity
+     * @param code process code
+     * @param id user id
+     * @return the process entity
+     */
     public ProcessStatus wrap(int code, int id) {
         String psid = TokenGenerator.generate(667788, code); // 667788 is a magic number
         Timestamp timestamp = DateUtil.getStamp();
@@ -54,11 +65,19 @@ public class BookService {
                 return new ProcessStatus(code, psid, "book_info_update_success", API_PROCESS_LEVEL_ADMIN, id, timestamp);
             case BOOK_INFO_PROCESS_FAILURE:
                 return new ProcessStatus(code, psid, "book_info_process_error", API_PROCESS_LEVEL_ADMIN, id, timestamp);
+            case BOOK_INFO_INSERT_DUPLICATE:
+                return new ProcessStatus(code, psid, "book_info_insert_duplicate", API_PROCESS_LEVEL_ADMIN, id, timestamp);
+
             default:
                 return new ProcessStatus(4606, psid, "book_process_unknown", API_PROCESS_LEVEL_NO, id, timestamp);
         }
     }
 
+    /**
+     * Get the book status entity by ISBN
+     * @param ISBN ISBN of the book
+     * @return the book status entity
+     */
     public BookStatus getStatus(String ISBN) {
         return statusMapper.getStatus(ISBN);
     }
@@ -69,7 +88,11 @@ public class BookService {
      * @return true if insert process is successful; else false
      */
     public int addBook(BookInfo bookInfo) {
-        return infoMapper.insert(bookInfo) ? BOOK_INFO_ADD_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
+        try {
+            return infoMapper.insert(bookInfo) ? BOOK_INFO_ADD_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
+        } catch (Exception e) {
+            return BOOK_INFO_INSERT_DUPLICATE;
+        }
     }
 
     /**

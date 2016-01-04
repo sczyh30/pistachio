@@ -20,8 +20,12 @@ public class ProcessLogService {
     @Resource
     private ProcessStatusMapper mapper;
 
-    public boolean insertUserLog() {
-        ProcessStatus status = new ProcessStatus();
+    /**
+     * Insert process log of user
+     * @param status status entity
+     * @return if the process is ok
+     */
+    public boolean insertUserLog(ProcessStatus status) {
         return mapper.insert(status);
     }
 
