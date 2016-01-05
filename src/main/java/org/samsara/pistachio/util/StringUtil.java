@@ -28,6 +28,7 @@ public class StringUtil {
             return hexString.toString().toUpperCase();
         }
         else {
+            //TODO: need handling
             System.out.println("#E2:Null Object when converting at StringUtil.bytes2hex");
             return "";
         }

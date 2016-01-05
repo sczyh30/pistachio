@@ -7,10 +7,7 @@ import org.samsara.pistachio.security.TokenGenerator;
 import org.samsara.pistachio.service.IUserAuthService;
 import org.samsara.pistachio.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -63,6 +60,11 @@ public class UserController {
         request.getSession().removeAttribute("user");
         request.getSession().removeAttribute("temp_token");
         return "logout_success";
+    }
+
+    @RequestMapping(value = "/api/user/{uid}", method = RequestMethod.GET)
+    public Object getUserTest(@PathVariable(value = "uid") int uid) {
+        return userService.getUserById(uid);
     }
 
 }

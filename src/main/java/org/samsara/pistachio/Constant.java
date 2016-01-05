@@ -58,7 +58,7 @@ public final class Constant {
     public static final int BOOK_INFO_REMOVE_SUCCESS = 6675;
     public static final int BOOK_INFO_ADD_SUCCESS = 6676;
     public static final int BOOK_INFO_UPDATE_SUCCESS = 6677;
-
+    public static final int BOOK_INFO_INSERT_DUPLICATE = 3401;
     public static final int BOOK_INFO_PROCESS_FAILURE = 3402;
 
 

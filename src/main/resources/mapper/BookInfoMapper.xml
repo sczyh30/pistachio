@@ -36,7 +36,7 @@
     <select id="get" resultMap="BaseResultMap" parameterType="java.lang.String">
         select <include refid="Base_Column_List"/>
         from book_info, book_detail, book_status
-        where book_info.ISBN = #{ISBN,jdbcType=VARCHAR} and book_status.ISBN = #{ISBN,jdbcType=VARCHAR}
+        where book_detail.ISBN = #{ISBN,jdbcType=VARCHAR} and book_info.ISBN = #{ISBN,jdbcType=VARCHAR} and book_status.ISBN = #{ISBN,jdbcType=VARCHAR}
     </select>
 
     <select id="getByName" resultMap="BaseResultMap" parameterType="java.lang.String">
@@ -49,7 +49,7 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM book_info, book_detail, book_status
-        WHERE book_info.author = #{author,jdbcType=VARCHAR}
+        WHERE book_info.author = #{author,jdbcType=VARCHAR} and book_detail.ISBN = book_info.ISBN
     </select>
 
     <select id="getAllNameByAuthor" resultType="java.lang.String" parameterType="java.lang.String">
@@ -67,13 +67,13 @@
     <select id="getAllByVgName" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM book_info, book_detail, book_status
-        WHERE book_info.name LIKE CONCAT('%', #{vague,jdbcType=VARCHAR}, '%')
+        WHERE book_info.name LIKE CONCAT('%', #{vague,jdbcType=VARCHAR}, '%') and book_detail.ISBN = book_info.ISBN
     </select>
 
     <select id="getAllByVgAuthor" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/>
         FROM book_info, book_detail, book_status
-        WHERE book_info.author LIKE CONCAT('%',#{vague,jdbcType=VARCHAR},'%')
+        WHERE book_info.author LIKE CONCAT('%',#{vague,jdbcType=VARCHAR},'%') and book_detail.ISBN = book_info.ISBN
     </select>
 
     <delete id="remove" parameterType="java.lang.String">

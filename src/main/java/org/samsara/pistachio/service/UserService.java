@@ -19,9 +19,23 @@ public class UserService {
     @Resource
     private UserMapper userMapper;
 
+    /**
+     * Get user entity by username
+     * @param username username
+     * @return user entity
+     */
     @Transactional(readOnly = true)
     public User getUser(String username) {
         return userMapper.getByName(username);
+    }
+
+    /**
+     * Get user entity by user id
+     * @param uid user id
+     * @return user entity
+     */
+    public User getUserById(int uid) {
+        return userMapper.get(uid);
     }
 
 }
