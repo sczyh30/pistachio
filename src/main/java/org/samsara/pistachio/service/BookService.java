@@ -55,7 +55,7 @@ public class BookService {
     public ProcessStatus wrap(int code, int id) {
         String psid = TokenGenerator.generate(667788, code); // 667788 is a magic number
         Timestamp timestamp = DateUtil.getStamp();
-        System.out.println(timestamp);
+        //System.out.println(timestamp);
         switch (code) {
             case BOOK_INFO_REMOVE_SUCCESS:
                 return new ProcessStatus(code, psid, "book_info_remove_success", API_PROCESS_LEVEL_ADMIN, id, timestamp);
@@ -153,7 +153,6 @@ public class BookService {
     public int removeBook(String ISBN) {
         return infoMapper.remove(ISBN) ? BOOK_INFO_REMOVE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
     }
-
 
 
 }

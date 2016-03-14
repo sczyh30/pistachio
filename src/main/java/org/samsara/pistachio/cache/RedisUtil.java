@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
  * @author sczyh30
  * @since 0.2
  */
-public class RedisUtil {
+public final class RedisUtil {
+
+    private RedisUtil() {}
 
     private volatile static JedisPool jedisPool = null;
 
@@ -43,7 +45,7 @@ public class RedisUtil {
 
             jedisPool = new JedisPool(config, bundle.getString("redis.ip"),
                     Integer.valueOf(bundle.getString("redis.port")), timeout);
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -54,11 +56,11 @@ public class RedisUtil {
      *
      * @return the Jedis entity
      */
-    public static Jedis getJedis() throws RedisPoolInitException {
+    public static Jedis getJedis() throws RedisInitException {
         if (jedisPool != null)
             return jedisPool.getResource();
         else
-            throw new RedisPoolInitException("Cannot get redis instance from a null JedisPool");
+            throw new RedisInitException("Cannot get redis instance from a null JedisPool");
     }
 
     /**

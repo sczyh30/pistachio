@@ -1,5 +1,5 @@
 group 'Samsara'
-version '0.3.49'
+version '0.3.51'
 
 apply plugin: 'java'
 apply plugin: 'war'
@@ -24,16 +24,18 @@ dependencies {
     compile 'javax.servlet:javax.servlet-api:3.1.0'
     compile 'javax.servlet.jsp:jsp-api:2.2'
 
+    // JSON Library
     compile 'com.fasterxml.jackson.core:jackson-databind:2.6.3'
+    compile 'com.google.code.gson:gson:2.6.2'
 
     // Spring framework dependencies
-    compile 'org.springframework:spring-core:4.2.3.RELEASE'
-    compile 'org.springframework:spring-context:4.2.3.RELEASE'
-    compile 'org.springframework:spring-aop:4.2.3.RELEASE'
-    compile 'org.springframework:spring-webmvc:4.2.3.RELEASE'
-    compile 'org.springframework:spring-jdbc:4.2.3.RELEASE'
-    compile 'org.springframework:spring-tx:4.2.3.RELEASE'
-    compile 'org.springframework:spring-test:4.2.3.RELEASE'
+    compile 'org.springframework:spring-core:4.2.5.RELEASE'
+    compile 'org.springframework:spring-context:4.2.5.RELEASE'
+    compile 'org.springframework:spring-aop:4.2.5.RELEASE'
+    compile 'org.springframework:spring-webmvc:4.2.5.RELEASE'
+    compile 'org.springframework:spring-jdbc:4.2.5.RELEASE'
+    compile 'org.springframework:spring-tx:4.2.5.RELEASE'
+    compile 'org.springframework:spring-test:4.2.5.RELEASE'
 
     // Mybatis ORM dependencies
     compile 'org.mybatis:mybatis:3.3.1'

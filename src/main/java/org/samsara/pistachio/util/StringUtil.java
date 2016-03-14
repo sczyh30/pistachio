@@ -7,7 +7,7 @@ import org.springframework.web.util.HtmlUtils;
  * String util class
  * @author sczyh30
  */
-public class StringUtil {
+public final class StringUtil {
 
     /**
      * This method converts byte stream to a hex string

@@ -36,12 +36,10 @@ public class BookController {
     @RequestMapping(value = "/api/book/{id}")
     public Object getBookInfo(@PathVariable(value = "id") String id) {
         BookInfo book = service.getBook(id);
-        System.out.println(book);
         if(book != null)
             return book;
         else
             return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
-        //    return new RequestError(RE_CODE_BOOK_NOT_FOUND, RE_MSG_BOOK_NOT_FOUND, API_GET_BOOK_INFO + id);
     }
 
     /**

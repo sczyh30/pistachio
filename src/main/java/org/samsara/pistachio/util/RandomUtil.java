@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author sczyh30
  * @since 0.3.22
  */
-public class RandomUtil {
+public final class RandomUtil {
 
     /**
      * Generator an random int by 10^(p-1)
