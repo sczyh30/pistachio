@@ -12,4 +12,6 @@ public interface CacheService {
     String cacheObj(String key, Object obj);
 
     String getCache(String key);
+
+    boolean delCache(String key);
 }

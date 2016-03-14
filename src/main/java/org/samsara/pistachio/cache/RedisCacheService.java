@@ -110,8 +110,9 @@ public final class RedisCacheService implements CacheService {
                 .collect(Collectors.toList());
     }
 
-    public long delCache(String key) {
-        return jedis.del(key);
+    @Override
+    public boolean delCache(String key) {
+        return jedis.del(key) > 0;
     }
 
     public long hDelCache(String key, String... fields) {

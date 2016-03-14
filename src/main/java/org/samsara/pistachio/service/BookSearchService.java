@@ -39,12 +39,12 @@ public class BookSearchService {
         return infoMapper.getAllNameByAuthor(author);
     }
 
-    // TODO: NEED HIGHER PERFORMANCE!!!!
+    // TODO: NEED HIGHER PERFORMANCE!!!! FULLTEXT INDEX!
     /**
      * Get all books by author name (vague query)<br>
-     * WARNING: this process could consume high because it can
+     * WARNING: this process could consume high because it cannot
      * make use of the index of the database.<br>
-     * Next version, we will use Solr to achieve this
+     * Next version, we will use Solr to solve this problem
      * @param vague vague name of author
      * @return the query result
      */
@@ -54,9 +54,9 @@ public class BookSearchService {
 
     /**
      * Get all books by book name (vague query)<br>
-     * WARNING: this process could consume high because it can
+     * WARNING: this process could consume high because it cannot
      * make use of the index of the database.<br>
-     * Next version, we will use Solr to achieve this
+     * Next version, we will use Solr to solve this problem
      * @param vague vague name of book
      * @return the query result
      */

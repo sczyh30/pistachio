@@ -26,6 +26,8 @@ import static org.samsara.pistachio.Constant.*;
 @Service(value = "bookService")
 public class BookService {
 
+    protected static final int NUM_PER_PAGE_DEFAULT = 15;
+
     @Resource
     protected BookInfoMapper infoMapper;
 
@@ -131,8 +133,13 @@ public class BookService {
     }
 
     @Transactional(readOnly = true)
-    public List<BookInfo> getBooksLimit(int n, int page) {
-        return infoMapper.getLatest();
+    public List<BookInfo> getBooksLimit(int start) {
+        return infoMapper.getBooksLimit(start, NUM_PER_PAGE_DEFAULT);
+    }
+
+    @Transactional(readOnly = true)
+    public List<BookInfo> getBooksLimit(int start, int n) {
+        return infoMapper.getBooksLimit(start, n);
     }
 
     /**

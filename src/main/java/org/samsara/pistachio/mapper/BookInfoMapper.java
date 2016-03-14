@@ -15,8 +15,6 @@ public interface BookInfoMapper {
 
     boolean insert(BookInfo book);
 
-    int insertSelective(BookInfo book);
-
     /**
      * Get the book info object by ISBN
      * @param isbn ISBN of the book
@@ -52,16 +50,20 @@ public interface BookInfoMapper {
     List<BookInfo> getLatest();
 
     /**
-     * Get the latest books by limit(n, page)
-     * @param num per num
-     * @param page page num
+     * Get books by limit(n, page)
+     * @param s start pos
+     * @param n entry num per page
      * @return list of books
      */
-    List<BookInfo> getLatestLimit(int num, int page);
+    List<BookInfo> getBooksLimit(int s, int n);
 
-    int updateByPrimaryKeySelective(BookInfo record);
-
-    boolean update(BookInfo record);
+    /**
+     * Get the latest books by limit(n, page)
+     * @param s start pos
+     * @param n entry num per page
+     * @return list of books
+     */
+    List<BookInfo> getLatestLimit(int s, int n);
 
     /**
      * Get book list by book name (vague search)
@@ -76,4 +78,10 @@ public interface BookInfoMapper {
      * @return list of books
      */
     List<BookInfo> getAllByVgAuthor(String vague);
+
+    boolean update(BookInfo record);
+
+    int updateByPrimaryKeySelective(BookInfo record);
+
+    int insertSelective(BookInfo book);
 }
