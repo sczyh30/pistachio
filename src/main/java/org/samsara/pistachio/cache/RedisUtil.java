@@ -5,6 +5,7 @@ import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
 import java.io.FileNotFoundException;
+
 import java.util.ResourceBundle;
 
 /**
@@ -57,7 +58,7 @@ public class RedisUtil {
         if (jedisPool != null)
             return jedisPool.getResource();
         else
-            throw new RedisPoolInitException("Cannot get redis instance from JedisPool");
+            throw new RedisPoolInitException("Cannot get redis instance from a null JedisPool");
     }
 
     /**
