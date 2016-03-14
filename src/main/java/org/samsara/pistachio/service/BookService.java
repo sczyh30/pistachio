@@ -26,13 +26,13 @@ import static org.samsara.pistachio.Constant.*;
 public class BookService {
 
     @Resource
-    private BookInfoMapper infoMapper;
+    protected BookInfoMapper infoMapper;
 
     @Resource
-    private BookStatusMapper statusMapper;
+    protected BookStatusMapper statusMapper;
 
     @Resource
-    private ProcessStatusMapper processStatusMapper;
+    protected ProcessStatusMapper processStatusMapper;
 
     /**
      * Insert the process entity and then return to next func

@@ -18,6 +18,7 @@
             <result column="classification" property="classification" jdbcType="VARCHAR"/>
             <result column="category_detail" property="categoryDetail" jdbcType="VARCHAR"/>
         </association>
+
         <association property="status" javaType="org.samsara.pistachio.entity.BookStatus">
             <id column="ISBN" jdbcType="VARCHAR"/>
             <result column="num_entire" property="numEntire" jdbcType="INTEGER"/>

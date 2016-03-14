@@ -17,11 +17,21 @@ public interface UserAuthMapper {
 
     UserAuth get(Integer uid);
 
+    /**
+     * Get user auth info by username
+     * @param username username
+     * @return user auth entity
+     */
     UserAuth getByName(String username);
 
     int updateByPrimaryKeySelective(UserAuth record);
 
     int update(UserAuth record);
 
+    /**
+     * Get password by username
+     * @param username username
+     * @return encrypted password (String)
+     */
     String getPassword(String username);
 }

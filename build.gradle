@@ -1,5 +1,5 @@
 group 'Samsara'
-version '0.3.36'
+version '0.3.49'
 
 apply plugin: 'java'
 apply plugin: 'war'
@@ -10,7 +10,7 @@ targetCompatibility = 1.8
 sourceCompatibility = 1.8
 
 repositories {
-    mavenCentral()
+    //mavenCentral()
     maven {
         url 'http://maven.oschina.net/content/groups/public/'
     }
@@ -36,9 +36,9 @@ dependencies {
     compile 'org.springframework:spring-test:4.2.3.RELEASE'
 
     // Mybatis ORM dependencies
-    compile 'org.mybatis:mybatis:3.3.0'
-    compile 'org.mybatis:mybatis-spring:1.2.3'
-    compile 'mysql:mysql-connector-java:5.1.37'
+    compile 'org.mybatis:mybatis:3.3.1'
+    compile 'org.mybatis:mybatis-spring:1.2.4'
+    compile 'mysql:mysql-connector-java:5.1.38'
 
     // Database pool
     compile 'com.alibaba:druid:1.0.16'

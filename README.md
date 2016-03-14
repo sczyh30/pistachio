@@ -12,6 +12,7 @@ Pistachio is released under the [MIT License][].
 
 ## Schedule
 
+- [x] 2015/12/26 v1 Version Feature Complete
 - [ ] 2016/1/24 v2 Version Refactor Begin
 - [ ] 2016/3 Refactor Feature Complete
 

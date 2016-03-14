@@ -16,7 +16,7 @@ import java.util.List;
 public class BookSearchService {
 
     @Resource
-    private BookInfoMapper infoMapper;
+    protected BookInfoMapper infoMapper;
 
     public BookInfo getByName(String name) {
         return infoMapper.getByName(name);

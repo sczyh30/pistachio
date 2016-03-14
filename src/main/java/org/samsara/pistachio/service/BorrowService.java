@@ -22,13 +22,13 @@ import static org.samsara.pistachio.Constant.*;
 public class BorrowService {
 
     @Resource
-    BorrowStatusMapper userBorrowMapper;
+    protected BorrowStatusMapper userBorrowMapper;
 
     @Resource
-    BookStatusMapper bookBorrowMapper;
+    protected BookStatusMapper bookBorrowMapper;
 
     @Resource
-    private ProcessStatusMapper processStatusMapper;
+    protected ProcessStatusMapper processStatusMapper;
 
     public ProcessStatus retAndRecord(int bid, int code) {
         ProcessStatus status = generateStatus(bid, code);
