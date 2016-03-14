@@ -35,7 +35,7 @@ public class BookController {
      */
     @RequestMapping(value = "/api/book/{id}")
     public Object getBookInfo(@PathVariable(value = "id") String id) {
-        BookInfo book = service.getBook(id);
+        Object book = service.getBook(id);
         if(book != null)
             return book;
         else

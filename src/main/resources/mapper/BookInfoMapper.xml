@@ -58,7 +58,7 @@
         WHERE book_info.author = #{author,jdbcType=VARCHAR}
     </select>
     <select id="getLatest" resultMap="BaseResultMap">
-        SELECT * FROM book_info
+        SELECT * FROM book_info LIMIT 20
     </select>
 
     <select id="getLatestLimit" resultMap="BaseResultMap">

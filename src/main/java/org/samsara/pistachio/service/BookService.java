@@ -1,5 +1,6 @@
 package org.samsara.pistachio.service;
 
+import org.samsara.pistachio.cache.RedisCacheService;
 import org.samsara.pistachio.entity.BookInfo;
 import org.samsara.pistachio.entity.BookStatus;
 import org.samsara.pistachio.entity.ProcessStatus;
@@ -33,6 +34,9 @@ public class BookService {
 
     @Resource
     protected ProcessStatusMapper processStatusMapper;
+
+    /** cache service */
+    protected RedisCacheService cacheService = RedisCacheService.getService();
 
     /**
      * Insert the process entity and then return to next func
@@ -101,8 +105,20 @@ public class BookService {
      * @return the BookInfo entity
      */
     @Transactional(readOnly = true)
-    public BookInfo getBook(String ISBN) {
-        return infoMapper.get(ISBN);
+    public Object getBook(String ISBN) {
+        String field = wrapCacheField(ISBN);
+        // if cached, return the cached object
+        if(cacheService.isHCached(CACHE_BOOK_KEY, field)) {
+            // TODO: this can directly return String, not necessary to warp; but need Spring MVC support
+            return cacheService.hGetCacheObj(CACHE_BOOK_KEY, field, BookInfo.class);
+        }
+        else {
+            BookInfo book = infoMapper.get(ISBN);
+            if(book != null)
+                cacheService.hCacheObj(CACHE_BOOK_KEY, field, book);
+            return book;
+        }
+
     }
 
     /**
@@ -111,6 +127,11 @@ public class BookService {
      */
     @Transactional(readOnly = true)
     public List<BookInfo> getLatestBook() {
+        return infoMapper.getLatest();
+    }
+
+    @Transactional(readOnly = true)
+    public List<BookInfo> getBooksLimit(int n, int page) {
         return infoMapper.getLatest();
     }
 
@@ -152,6 +173,16 @@ public class BookService {
      */
     public int removeBook(String ISBN) {
         return infoMapper.remove(ISBN) ? BOOK_INFO_REMOVE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
+    }
+
+    /**
+     * Wrap the ISBN to cache key
+     * Format:<em>BOOK_ISBN</em>
+     * @param ISBN ISBN
+     * @return the wrapped cache field
+     */
+    private String wrapCacheField(String ISBN) {
+        return "BOOK_" + ISBN;
     }
 
 

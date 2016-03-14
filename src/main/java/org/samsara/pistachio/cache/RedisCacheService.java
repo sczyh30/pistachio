@@ -17,7 +17,7 @@ public final class RedisCacheService implements CacheService {
     private volatile Jedis jedis = RedisUtil.getJedis();
 
     private static class Holder {
-        private static RedisCacheService instance;
+        private static RedisCacheService instance = new RedisCacheService();
     }
 
     public static RedisCacheService getService() {
@@ -69,7 +69,11 @@ public final class RedisCacheService implements CacheService {
         return JsonUtil.fromJson(getCache(key), clazz);
     }
 
-    public long hCacheObj(String key, String field, String value) {
+    public long hCacheObj(String key, String field, Object obj) {
+        return hCache(key, field, JsonUtil.toJson(obj));
+    }
+
+    public long hCache(String key, String field, String value) {
         return jedis.hset(key, field, value);
     }
 
@@ -89,11 +93,28 @@ public final class RedisCacheService implements CacheService {
         return JsonUtil.fromJson(hGetCache(key, field), clazz);
     }
 
+    /**
+     * Get list of objects from concrete fields in a hash map
+     * convert the data from JSON to objects
+     * @param key hash key
+     * @param clazz Class of obj
+     * @param fields fields
+     * @param <T> type of obj, must be the same type, or else boom!
+     * @return list of objects
+     */
     public <T> List<T> hmGetCacheObjList(String key , Class<T> clazz, String... fields) {
         List<String> list = hmGetCacheList(key, fields);
 
         return list.stream()
                 .map(x -> JsonUtil.fromJson(x, clazz))
                 .collect(Collectors.toList());
+    }
+
+    public long delCache(String key) {
+        return jedis.del(key);
+    }
+
+    public long hDelCache(String key, String... fields) {
+        return jedis.hdel(key, fields);
     }
 }
