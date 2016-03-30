@@ -18,8 +18,17 @@ public interface BookCategoryMapper {
      */
     boolean remove(Integer cid);
 
+    /**
+     * Remove the target category by name
+     * @param category category name
+     * @return true if the process is successful; else fal
+     */
     boolean removeByName(String category);
 
+    /**
+     * Get all category names
+     * @return list of category name
+     */
     List<String> getAll();
 
     /**

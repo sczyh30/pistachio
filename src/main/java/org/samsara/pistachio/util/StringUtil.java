@@ -7,7 +7,7 @@ import org.springframework.web.util.HtmlUtils;
  * String util class
  * @author sczyh30
  */
-public class StringUtil {
+public final class StringUtil {
 
     /**
      * This method converts byte stream to a hex string
@@ -27,14 +27,21 @@ public class StringUtil {
             }
             return hexString.toString().toUpperCase();
         }
-        else {
-            //TODO: need handling
-            System.out.println("#E2:Null Object when converting at StringUtil.bytes2hex");
-            return "";
-        }
+        else
+            throw new NullPointerException("Null bytes"); //TODO: Null Pointer!
     }
 
     public static String htmlEscape(String str) {
         return HtmlUtils.htmlEscape(str);
     }
+
+    /**
+     * Replace the common "\r" to &lt;br&gt;
+     * @param str str
+     * @return converted str
+     */
+    public static String replaceToHtmlEnter(String str) {
+        return str.replace("\r", "<br/>");
+    }
+
 }

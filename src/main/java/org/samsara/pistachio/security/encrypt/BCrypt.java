@@ -14,6 +14,7 @@ package org.samsara.pistachio.security.encrypt;
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
+import java.io.InvalidObjectException;
 import java.io.UnsupportedEncodingException;
 
 import java.security.SecureRandom;
@@ -388,7 +389,7 @@ public class BCrypt {
     private static String encode_base64(byte d[], int len)
             throws IllegalArgumentException {
         int off = 0;
-        StringBuffer rs = new StringBuffer();
+        StringBuilder rs = new StringBuilder();
         int c1, c2;
 
         if (len <= 0 || len > d.length)
@@ -486,7 +487,7 @@ public class BCrypt {
      * @param lr	an array containing the two 32-bit half blocks
      * @param off	the position in the array of the blocks
      */
-    private final void encipher(int lr[], int off) {
+    private void encipher(int lr[], int off) {
         int i, n, l = lr[off], r = lr[off + 1];
 
         l ^= P[0];
@@ -650,12 +651,15 @@ public class BCrypt {
      */
     // TODO: this method might throw NullPointerException
     public static String encrypt(String password, String salt) {
+        if(password == null || salt == null) {
+            throw new NullPointerException("Null string while encrypting");
+        }
         BCrypt B;
         String real_salt;
         byte passwordb[], saltb[], hashed[];
         char minor = (char)0;
         int rounds, off = 0;
-        StringBuffer rs = new StringBuffer();
+        StringBuilder rs = new StringBuilder();
 
         if (salt.charAt(0) != '$' || salt.charAt(1) != '2')
             throw new IllegalArgumentException ("Invalid salt version");

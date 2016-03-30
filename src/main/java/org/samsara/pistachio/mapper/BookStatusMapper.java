@@ -13,6 +13,11 @@ public interface BookStatusMapper {
 
     boolean insert(BookStatus record);
 
+    /**
+     * Get book status by ISBN
+     * @param isbn ISBN of the book
+     * @return the book status entity
+     */
     BookStatus getStatus(String isbn);
 
     int updateByPrimaryKeySelective(BookStatus record);

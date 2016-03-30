@@ -26,6 +26,19 @@ public class User {
 
     private int bkst; // Book borrow auth
 
+    public User() {}
+
+    public User(int borrowId, String username, Integer role, String tips, Integer gender, Date birth, String email, int bkst) {
+        this.borrowId = borrowId;
+        this.username = username;
+        this.role = role;
+        this.tips = tips;
+        this.gender = gender;
+        this.birth = birth;
+        this.email = email;
+        this.bkst = bkst;
+    }
+
     public Integer getUid() {
         return uid;
     }

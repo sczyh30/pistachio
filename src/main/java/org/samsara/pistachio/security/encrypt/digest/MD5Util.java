@@ -4,6 +4,7 @@ import org.samsara.pistachio.security.EncryptException;
 import org.samsara.pistachio.util.StringUtil;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * Samsara Common Library<br>
@@ -27,9 +28,9 @@ public class MD5Util {
                 byte[] md = mdInst.digest(); // get the encrypted byte stream
 
                 return StringUtil.bytes2hex(md);
-            } catch (Exception e) {
+            } catch (NoSuchAlgorithmException e) {
                 e.printStackTrace();
-                return null;
+                return "";
             }
         }
         else {

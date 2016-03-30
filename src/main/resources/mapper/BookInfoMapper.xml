@@ -18,6 +18,7 @@
             <result column="classification" property="classification" jdbcType="VARCHAR"/>
             <result column="category_detail" property="categoryDetail" jdbcType="VARCHAR"/>
         </association>
+
         <association property="status" javaType="org.samsara.pistachio.entity.BookStatus">
             <id column="ISBN" jdbcType="VARCHAR"/>
             <result column="num_entire" property="numEntire" jdbcType="INTEGER"/>
@@ -57,11 +58,7 @@
         WHERE book_info.author = #{author,jdbcType=VARCHAR}
     </select>
     <select id="getLatest" resultMap="BaseResultMap">
-        SELECT * FROM book_info
-    </select>
-
-    <select id="getLatestLimit" resultMap="BaseResultMap">
-        SELECT * FROM book_info
+        SELECT * FROM book_info LIMIT 20
     </select>
 
     <select id="getAllByVgName" resultMap="BaseResultMap">
@@ -74,6 +71,18 @@
         SELECT <include refid="Base_Column_List"/>
         FROM book_info, book_detail, book_status
         WHERE book_info.author LIKE CONCAT('%',#{vague,jdbcType=VARCHAR},'%') and book_detail.ISBN = book_info.ISBN
+    </select>
+
+    <!-- TODO: only returns BookInfo obj, needs to verify -->
+    <select id="getBooksLimit" resultType="org.samsara.pistachio.entity.BookInfo">
+        SELECT *
+        FROM book_info, book_detail, book_status
+        LIMIT #{0,jdbcType=INTEGER}, #{1,jdbcType=INTEGER}
+    </select>
+
+    <select id="getLatestLimit" resultType="org.samsara.pistachio.entity.BookInfo">
+        SELECT * FROM book_info
+        LIMIT #{0,jdbcType=INTEGER}, #{1,jdbcType=INTEGER}
     </select>
 
     <delete id="remove" parameterType="java.lang.String">

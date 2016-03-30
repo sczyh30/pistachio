@@ -1,0 +1,13 @@
+machine:
+
+  timezone:
+    Asia/Shanghai
+
+  java:
+    version:
+      oraclejdk8
+
+  services:
+    - mysql
+    - redis
+
