@@ -1,25 +1,15 @@
-# Pistachio
-[![Travis Build Status](https://api.travis-ci.org/0x5f3759df-Hacker/pistachio.svg?branch=dev)](https://travis-ci.org/0x5f3759df-Hacker/pistachio)
+# Samsara Pistachio
+[![Travis Build Status](https://travis-ci.org/0x5f3759df-Hacker/pistachio.svg?branch=api_v1)](https://travis-ci.org/0x5f3759df-Hacker/pistachio)
 [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/1gkcmw72qgykofmj/branch/dev?svg=true)](https://ci.appveyor.com/project/sczyh30/pistachio/branch/dev)
 [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/0x5f3759df-Hacker/pistachio)
 
-Pistachio is an open-source project based on the topic *XDU Data Structure Assignment, Project 6 - Book Management System*.
+Samsara Pistachio is an open-source project based on the topic *XDU Data Structure Assignment, Project 6 - Book Management System*.
 It is expected to be a complete book management system that can be used in product environment.
 
+This branch is Samsara Pistachio with API v1. Newer features will not be added into this version.
 
 ## License
 Pistachio is released under the [MIT License][].
-
-## Schedule
-
-- [x] 2015/12/26 v1 Version Feature Complete
-- [x] 2016/1/24 v2 Version Refactor Begin
-- [ ] 2016/3 Refactor Feature Complete
-
-## Todo
-
-- [ ] Refactor the database design, remove all foreign keys
-- [ ] Make distributed version
 
 ## Contributors
 Eric Zhao ([@sczyh30](https://github.com/sczyh30))
