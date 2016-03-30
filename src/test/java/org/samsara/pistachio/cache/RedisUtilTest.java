@@ -49,6 +49,11 @@ public class RedisUtilTest {
         map.clear();
     }
 
+    @Test
+    public void testHMget() {
+        jedis.hvals("VERT_TODO").forEach(System.out::println);
+    }
+
     /*@After
     public void tearDown() throws Exception {
         RedisUtil.release();

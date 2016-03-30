@@ -50,7 +50,7 @@ public class UserAuthServiceImpl implements IUserAuthService {
 
     @Override
     public boolean register(String username, String password, String tips, String email, String gender, Date birthday) {
-
+        //register(new User())
         return false;
     }
 

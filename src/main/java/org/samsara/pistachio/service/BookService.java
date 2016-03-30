@@ -9,6 +9,7 @@ import org.samsara.pistachio.mapper.BookStatusMapper;
 import org.samsara.pistachio.mapper.ProcessStatusMapper;
 import org.samsara.pistachio.security.TokenGenerator;
 import org.samsara.pistachio.util.DateUtil;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -132,11 +133,22 @@ public class BookService {
         return infoMapper.getLatest();
     }
 
+    /**
+     * Get the latest books by limit(start, default = 15)
+     * @param start start pos
+     * @return list of books
+     */
     @Transactional(readOnly = true)
     public List<BookInfo> getBooksLimit(int start) {
         return infoMapper.getBooksLimit(start, NUM_PER_PAGE_DEFAULT);
     }
 
+    /**
+     * Get the latest books by limit(start, page)
+     * @param start start pos
+     * @param n entry num per page
+     * @return list of books
+     */
     @Transactional(readOnly = true)
     public List<BookInfo> getBooksLimit(int start, int n) {
         return infoMapper.getBooksLimit(start, n);
@@ -168,7 +180,15 @@ public class BookService {
      * @return true if update process is successful; else false
      */
     public int updateBook(BookInfo bookInfo) {
-        return infoMapper.update(bookInfo) ? BOOK_INFO_UPDATE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
+        //int status = infoMapper.update(bookInfo) ? BOOK_INFO_UPDATE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
+        if (infoMapper.update(bookInfo)) {
+            // if successfully updated, cache the obj
+            cacheService.hCacheObj(CACHE_BOOK_KEY, wrapCacheField(bookInfo.getISBN()),
+                    bookInfo);
+            return BOOK_INFO_UPDATE_SUCCESS;
+        }
+
+        return BOOK_INFO_PROCESS_FAILURE;
     }
 
     /**
@@ -179,6 +199,8 @@ public class BookService {
      * @return the status code
      */
     public int removeBook(String ISBN) {
+        // remove cache
+        cacheService.delCache(wrapCacheField(ISBN));
         return infoMapper.remove(ISBN) ? BOOK_INFO_REMOVE_SUCCESS : BOOK_INFO_PROCESS_FAILURE;
     }
 

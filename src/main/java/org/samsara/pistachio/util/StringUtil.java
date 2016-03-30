@@ -34,4 +34,14 @@ public final class StringUtil {
     public static String htmlEscape(String str) {
         return HtmlUtils.htmlEscape(str);
     }
+
+    /**
+     * Replace the common "\r" to &lt;br&gt;
+     * @param str str
+     * @return converted str
+     */
+    public static String replaceToHtmlEnter(String str) {
+        return str.replace("\r", "<br/>");
+    }
+
 }
