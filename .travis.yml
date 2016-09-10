@@ -5,5 +5,4 @@ jdk:
 
 services:
   - mysql
-  - rabbitmq
   - redis-server

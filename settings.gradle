@@ -1,2 +1,13 @@
-rootProject.name = 'Pistachio'
+rootProject.name = 'pistachio'
+
+include "config-service"
+include "discovery-service"
+include "api-gateway"
+include "microservice-common"
+include "user-service"
+include "book-service"
+include "movie-service"
+include "rating-service"
+include "recommendation-service"
+include "pistachio-web-ui"
 

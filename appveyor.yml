@@ -3,7 +3,7 @@ version: '{build}'
 branches:
   only:
     - master
-    - dev
+    - v2
 
 os: Windows Server 2012
 
@@ -16,15 +16,15 @@ install:
       Add-Type -AssemblyName System.IO.Compression.FileSystem
       if (!(Test-Path -Path "C:\gradle" )) {
         (new-object System.Net.WebClient).DownloadFile(
-          'https://services.gradle.org/distributions/gradle-2.9-bin.zip',
+          'https://services.gradle.org/distributions/gradle-3.0-bin.zip',
           'C:\gradle.zip'
         )
         [System.IO.Compression.ZipFile]::ExtractToDirectory("C:\gradle.zip", "C:\gradle")
       }
-  - cmd: SET PATH=C:\gradle\gradle-2.9\bin;%JAVA_HOME%\bin;%PATH%
+  - cmd: SET PATH=C:\gradle\gradle-3.0\bin;%JAVA_HOME%\bin;%PATH%
 
 build_script:
-  - gradle build
+  - gradle build -X test
 
 test_script:
   - gradle test
